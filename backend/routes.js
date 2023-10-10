@@ -11,4 +11,14 @@ router.get('/quizzes', async () => {
     return quizzes
 })
 
+router.get('/login/:email/:password', async (req, res) => {
+    const { email, password } = req.params
+
+    const result = await database.loginAuth(email, password)
+
+    console.log(result)
+
+    res.send("Parametros recebidos")
+})
+
 module.exports = router

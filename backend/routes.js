@@ -3,22 +3,24 @@ const database = require('./database-mysql')
 
 const router = express.Router()
 
-router.get('/quizzes', async () => {
+router.get('/quizzes', async (req, res) => {
     const quizzes = await database.searchAll()
 
     console.log(quizzes)
 
-    return quizzes
+    res.status(200).json(quizzes)
 })
 
-router.get('/login/:email/:password', async (req, res) => {
-    const { email, password } = req.params
+router.post('/login', async (req, res) => {
+    const { email, password } = req.body
 
     const result = await database.loginAuth(email, password)
 
-    console.log(result)
+    if (result[0].count == 0) {
+        return res.status(401).json({ message: "Credenciais inválidas!"})
+    }
 
-    res.send("Parametros recebidos")
+    res.json({ message: "Parametros recebidos", user: email})
 })
 
 module.exports = router

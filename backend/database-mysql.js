@@ -16,13 +16,8 @@ module.exports = {
 
     loginAuth: (email, password) => {
         return new Promise ((acept, rejected) => {
-            db.query('SELECT count(*) FROM usuario WHERE email = ? AND senha = ?', [email, password], (error, results) => {
-                if (error) {
-                    rejected(error)
-                    return 
-                }
-
-                acept(results)
+            db.query('SELECT count(*) as count FROM usuario WHERE email = ? AND senha = ?', [email, password], (error, results) => {
+                { error ? rejected(error) : acept(results)}
             })
         }) 
     }

@@ -22,22 +22,27 @@ export default function Login() {
     }
 
     return (
-        <div className="flex justify-between bg-white">
-            <div className="flex-col gap-4">
-                <header className="flex justify-between">
-                    <img src="assets/logo.svg" alt="logo da empresa" />
+        <div className="flex bg-[white] max-w-[1440px] h-screen gap-0 text-gray-dark">
+            <div className="flex flex-col basis-2/3 w-max justify-between items-center text-center mt-10 mb-16 mx-16">
+                <header className="flex col-span-2 gap-4">
+                    <div>
+                        <img src="assets/logo.svg" alt="logo da empresa" />
+                    </div>
+                    
 
-                    <div className="flex">
-                        <p className="text-3xl font-bold underline">Possui conta?</p>
-                        <button className="bg-blue-dark px-6 py-2 white">Sign Up</button>
+                    <div className="flex gap-4 items-center">
+                        <p className="">Possui conta?</p>
+                        <button className="bg-blue-dark text-[white] text-2xl px-6 py-2">Sign Up</button>
                     </div>
                 </header>
 
-                <main>
-                    <h1>Faça login</h1>
-                    <p>FAÇA LOGIN PARA CONTINUAR A USAR SUA CONTA</p>
+                <main className="flex flex-col gap-14 max-w-[550px]">
+                    <div>
+                        <h1 className="text-blue-dark text-3xl pb-2">Faça login</h1>
+                        <p>FAÇA LOGIN PARA CONTINUAR A USAR SUA CONTA</p>   
+                    </div>
 
-                    <form>
+                    <form className="flex flex-col gap-4">
                         <input
                             type="text"
                             placeholder="Email"
@@ -45,7 +50,7 @@ export default function Login() {
                             onChange={(e) => {
                                 setEmail(e.target.value)
                             }}
-                            className="h-16 px-6 py-5 rounded border border-zinc-600 justify-start items-center "
+                            className="h-15 px-6 py-5 bg-[white]  border-2 border-gray-dark rounded"
                         />
 
                         <input
@@ -54,17 +59,25 @@ export default function Login() {
                             value={password}
                             onChange={(e) => {
                                 setPassword(e.target.value)
-                            }} />
+                            }}
+                        
+                            className="h-15 px-6 py-5 bg-[white] max-w-[550px] border-2 border-gray-dark rounded"
+                        />
 
 
-                        <button onClick={handleLogin}>Entrar</button>
+                        <button 
+                            onClick={handleLogin} 
+                            className="bg-blue-light px-6 py-4 text-[white]"
+                        >
+                            ENTRAR
+                        </button>
                     </form>
                 </main>
                 <footer>© 2022. - 2023 Todos os direitos reservados. TecnoPlay</footer>
             </div>
-            <div>
-                <img src="assets/banner.svg" alt="banner" />
-            </div>
+        
+                <img src="assets/banner.svg" className="h-screen w-max basis-1/3" alt="banner" />
+
         </div>
     )
 }

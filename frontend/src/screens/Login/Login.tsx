@@ -7,7 +7,7 @@ export default function Login() {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
 
-    const handleLogin = async (event) => {
+    const handleLogin = async (event: { preventDefault: () => void }) => {
         event.preventDefault()
 
         const response = await instance
@@ -68,6 +68,8 @@ export default function Login() {
                         </button>
                     </form>
                 </main>
+
+                
                 <footer>© 2022. - 2023 Todos os direitos reservados. TecnoPlay</footer>
             </div>
             <div className="banner">

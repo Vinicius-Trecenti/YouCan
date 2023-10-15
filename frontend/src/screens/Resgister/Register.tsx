@@ -1,60 +1,109 @@
 
-import PasswordInputWithToggle from "./password"
+import { useState } from "react"
+// import PasswordInputWithToggle from "./password"
+import { instance } from "../../axios-instance"
+import "./style.css"
+import Header from "../../components/Header/Header"
 
-export default function Register(){
+
+export default function Register() {
+
+    const [username, setUsername] = useState("")
+    const [email, setEmail] = useState("")
+    const [dateBirth, setDateBirth] = useState("")
+    const [password, setPassword] = useState("")
+    const [checkPassword, setCheckPassword] = useState("")
+    
+
+    const handleRegister = async (event: { preventDefault: () => void }) => {
+
+        event.preventDefault()
+
+        if(password == checkPassword){
+            await instance.post("/cadastro", { 
+                username, email, dateBirth, password
+            }) 
+            .catch((error) => {
+                console.error(error)
+            })
+            alert("USUARIO CADASTRADO!!")
+        }else{
+            alert("SENHA PRECISA SER IGUAL")
+        }
+    } 
+
 
     return (
-        <div className="flex bg-[white] max-w-[1440px] h-screen gap-0 text-gray-dark">
-            <div className="flex flex-col basis-2/3 w-max justify-between items-center text-center mt-10 mb-16 mx-16">
 
-                <header className="flex col-span-2 gap-4">
+        <div className="screen">
+            <div className="container">
+
+                <Header/>
+
+                <main className="">
                     <div>
-                        <img src="assets/logo.svg" alt="logo da empresa" />
-                    </div>
-
-                    <div className="flex gap-4 items-center">
-                        <p className="">Possui conta?</p>
-                        <button className="bg-blue-dark text-[white] text-2xl px-6 py-2">Sign Up</button>
-                    </div>
-                </header>
-
-
-                <main className="flex flex-col gap-14 max-w-[550px]">
-                    <div>
-                        <h1 className="text-blue-dark text-3xl pb-2">Faça seu cadastro!</h1>
+                        <h1 className="">Faça seu cadastro!</h1>
                         <p>FAÇA SEU CADASTRO PARA INICIAR USO DA SUA CONTA</p>
                     </div>
 
-                    <form className="flex flex-col gap-4 "> 
-                        <input 
-                            type="text" 
-                            placeholder="Username" 
-                            className="h-15 px-6 py-5 bg-[white]  border-2 border-gray-dark rounded"/>
-                        
-                        <input 
-                            type="text" 
-                            placeholder="Email" 
-                            className="h-15 px-6 py-5 bg-[white]  border-2 border-gray-dark rounded"/>
-
-                        <input 
-                            type="date"    
-                            placeholder="Data de nascimento" 
-                            className="h-15 px-6 py-5 bg-[white]  border-2 border-gray-dark rounded"/>
+                    <form className="">
+                        <input
+                            type="text"
+                            placeholder="Username"
+                            value={username}
+                            className=""
+                            onChange={(e) => { setUsername(e.target.value) }} />
 
 
-                        <PasswordInputWithToggle typePassword="Senha"/>
+                        <input
+                            type="text"
+                            placeholder="Email"
+                            value={email}
+                            className=""
+                            onChange={(e) => { setEmail(e.target.value) }} />
 
-                        <PasswordInputWithToggle typePassword="Confirmar senha"/>
+                        <input
+                            type="date"
+                            value={dateBirth}
+                            className=""
+                            onChange={(e) => { setDateBirth(e.target.value) }} />
+
+                        <input
+                            type="password"
+                            placeholder="senha"
+                            value={password}
+
+                            onChange={(e) => setPassword(e.target.value)}
+
+                            className=""
+                        />
+
+                        <input
+                            type="password"
+                            placeholder="senha de confimação"
+                            value={checkPassword}
+
+                            onChange={(e) => setCheckPassword(e.target.value)}
+
+                            className=""
+                        />
 
 
-                        <button className="bg-blue-light px-6 py-4 text-[white]" >CADASTRAR</button>
+                        {/* <PasswordInputWithToggle typePassword="Senha"/> */}
+
+                        {/* <PasswordInputWithToggle typePassword="Confirmar senha"/> */}
+
+                        <button className="btn-register" onClick={handleRegister}>CADASTRAR</button>
                     </form>
 
                 </main>
 
                 <footer>© 2022. - 2023 Todos os direitos reservados. TecnoPlay</footer>
             </div>
-                <img src="assets/banner.svg" className="h-screen w-max basis-1/3" alt="banner" />
+
+            
+            <img src="assets/banner.svg" className="" alt="banner" />
+            
 
         </div>
     )

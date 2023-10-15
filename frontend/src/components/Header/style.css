@@ -1,0 +1,20 @@
+header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+
+}
+
+header .message-btn{
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    gap: 10px;
+}
+
+header .message-btn .btn-sign{
+    color: #F1F4FE;
+    background-color: #073B4C;
+    
+}

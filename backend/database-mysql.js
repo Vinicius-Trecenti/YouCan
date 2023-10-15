@@ -24,7 +24,7 @@ module.exports = {
 
     createUser: (username, email, dateBirth, password) => {
         return new Promise ((acept, rejected) => {
-            db.query('INSERT INTO usuario (nome, senha, email, nascimento) VALUES (?, ?, ?, ?)', [ username, email, dateBirth, password ], (error, results) => {
+            db.query('INSERT INTO usuario (nome, email, nascimento, senha) VALUES (?, ?, ?, ?)', [ username, email, dateBirth, password ], (error, results) => {
                 { error ? rejected(error) : acept(results) }
             })
         })

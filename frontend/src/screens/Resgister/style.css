@@ -1,0 +1,70 @@
+.screen {
+    display: flex;
+    /* height: 100vh; */
+    width: 100vw;
+    background-color: #F1F4FE;
+}
+
+.container {
+    padding: 40px 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    gap: 87.5px;
+
+}
+
+main {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 60px;
+    text-align: center;
+
+}
+
+h1 {
+    color: #073B4C;
+    font-family: Inter;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 44px;
+    letter-spacing: -0.5px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 550px;
+}
+
+form input {
+    height: 62px;
+    padding: 20px 24px;
+    border-radius: 4px;
+    border: 1px solid #616161;
+    
+}
+
+form input::placeholder{
+    color: #616161;
+}
+
+form .btn-register {
+    border-radius: 4px;
+    background: #118AB2;
+    color: #F1F4FE;
+    padding: 16px 24px;
+    
+}
+
+
+img {
+    max-height: 100%; /* A imagem não excederá a altura da tela */
+    max-width: 100%; 
+    height: auto; /* Mantém a proporção da imagem */
+}   
+

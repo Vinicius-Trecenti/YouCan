@@ -17,9 +17,11 @@ function PasswordInputWithToggle(props: { typePassword: string | undefined; }) {
           placeholder={props.typePassword}
           id="password"
           value={password}
+          
           onChange={(e) => setPassword(e.target.value)}
+
           className="w-full  px-3 py-4"
-        />
+          />
         <span
           onClick={togglePasswordVisibility}
           className="absolute top-2 right-2 cursor-pointer"

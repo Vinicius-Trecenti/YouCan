@@ -21,8 +21,8 @@ router.post('/login', async (req, res) => {
     if (result[0].count == 0) {
         return res.status(401).json({ message: "Credenciais inválidas!"})
     }
-
-    res.json({ message: "Parametros recebidos", user: email})
+ 
+    res.json({ message: "Parametros recebidos", id: result[0].id})
 })
 
 // Tela de cadastro

@@ -1,0 +1,15 @@
+.bar-user {
+    display: flex;
+    /* justify-content: justify-center; */
+    align-items: center;
+    justify-content: end;
+    gap: 24px;
+
+    
+}   
+
+.bar-user img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50px;
+}

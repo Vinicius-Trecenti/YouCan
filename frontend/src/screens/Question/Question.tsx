@@ -1,4 +1,5 @@
-import Header from "../../components/Header/Header"
+// import Header from "../../components/Header/Header"
+import HeaderUser from "../../components/HeaderUser/HeaderUser"
 import "./style.css"
 
 export default function Question(){
@@ -6,7 +7,7 @@ export default function Question(){
     return(
         <div className="screen">
             <div>
-                {/* header */}
+                <HeaderUser />
             </div>
             <main>
                 <div className='progress'>

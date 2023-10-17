@@ -34,6 +34,9 @@ body {
   min-width: 100vw;
   min-height: 100vh;
   overflow-x: hidden;
+
+  color: #616161;
+  background-color: #F1F4FE;
 }
 
 h1 {
@@ -54,6 +57,13 @@ strong {
   color: #073B4C;
 }
 
+p {
+  color: #616161;
+  font-size: 20px;
+  font-weight: 400;
+  word-wrap: break-word
+}
+
 button {
   border-radius: 8px;
   border: 1px solid transparent;
@@ -66,12 +76,12 @@ button {
   transition: border-color 0.25s;
 }
 button:hover {
-  border-color: #646cff;
+  opacity: 90%;
 }
-button:focus,
+/* button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
-}
+} */
 
 @media (prefers-color-scheme: light) {
   :root {

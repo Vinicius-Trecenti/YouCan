@@ -1,0 +1,16 @@
+.header {
+    display: flex;
+    padding: 60px 60px 20px 60px;
+    justify-content: space-between;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.logo img {
+    height: 85px;
+    width: auto;
+}

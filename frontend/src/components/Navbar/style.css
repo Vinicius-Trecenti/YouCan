@@ -33,6 +33,10 @@ nav {
 }
 
 .pages a {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
     color: #073B4C;
     font-size: 24px;
 
@@ -47,6 +51,11 @@ nav {
 }
 
 .btn {
+    display: flex;
+    align-items:center;
+    justify-content: center;
+    gap: 28px;
+
     width: 100%;
     border-radiu: 24px;
     padding: 8px 24px;

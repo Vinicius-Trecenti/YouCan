@@ -1,8 +1,6 @@
 .screen {
     display: flex;
-    /* height: 100vh; */
     width: 100vw;
-    background-color: #F1F4FE;
 }
 
 .container {
@@ -24,16 +22,6 @@ main {
 
 }
 
-h1 {
-    color: #073B4C;
-    font-family: Inter;
-    font-size: 28px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: 44px;
-    letter-spacing: -0.5px;
-}
-
 form {
     display: flex;
     flex-direction: column;
@@ -43,28 +31,30 @@ form {
 
 form input {
     height: 62px;
+    width: 100%;
     padding: 20px 24px;
     border-radius: 4px;
     border: 1px solid #616161;
+    background-color: #F1F4FE;
+    font-size: 20px;
+}
+
+form input::placeholder, input[type="date"]::-webkit-calendar-picker-indicator{
+    color: #616161;
     
 }
 
-form input::placeholder{
-    color: #616161;
+form .password {
+    display: flex;
+}
+
+form .password-icon {
+    position: absolute;
 }
 
 form .btn-register {
     border-radius: 4px;
     background: #118AB2;
     color: #F1F4FE;
-    padding: 16px 24px;
-    
+    padding: 16px 24px;   
 }
-
-
-img {
-    max-height: 100%; /* A imagem não excederá a altura da tela */
-    max-width: 100%; 
-    height: auto; /* Mantém a proporção da imagem */
-}   
-

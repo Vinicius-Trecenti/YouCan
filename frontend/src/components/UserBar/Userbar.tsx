@@ -1,3 +1,4 @@
+import { CaretDown } from '@phosphor-icons/react'
 import './style.css'
 
 export default function Userbar() {
@@ -5,7 +6,7 @@ export default function Userbar() {
         <div className='bar-user'>
             <img src="https://picsum.photos/seed/picsum/200/300" alt="" />
             <h2>Lucas</h2>
-            {/* icon */}
+            <CaretDown size={32} color='#073B4C'/>
         </div>
     )
 }

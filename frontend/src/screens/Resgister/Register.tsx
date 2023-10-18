@@ -1,25 +1,40 @@
 
 import { useState } from "react"
-// import PasswordInputWithToggle from "./password"
 import { instance } from "../../axios-instance"
-import "./style.css"
+import { Eye } from "@phosphor-icons/react"
+
 import Header from "../../components/Header/Header"
 
 
+import "./style.css"
+
 export default function Register() {
 
-    const [username, setUsername] = useState("")
-    const [email, setEmail] = useState("")
-    const [dateBirth, setDateBirth] = useState("")
-    const [password, setPassword] = useState("")
-    const [checkPassword, setCheckPassword] = useState("")
-    
+    const [ username, setUsername ] = useState("")
+    const [ email, setEmail ] = useState("")
+    const [ dateBirth, setDateBirth ] = useState("")
+    const [ password, setPassword ] = useState("")
+    const [ checkPassword, setCheckPassword ] = useState("")
+    const [ showPassword, setShowPassword ] = useState(false) 
+
+    const validateFormFields = () => {
+        if (username === "" || email === "" || dateBirth === "" || password === "" || checkPassword === "") {
+            alert("Informe todos os campos!")
+            return false
+            
+        } else if (password != checkPassword) {
+            alert("Insira os campos de senha corretamente!")
+            return false
+
+        }
+
+        return true
+    }
 
     const handleRegister = async (event: { preventDefault: () => void }) => {
-
         event.preventDefault()
 
-        if(password == checkPassword){
+        if(validateFormFields()){
             await instance.post("/cadastro", { 
                 username, email, dateBirth, password
             }) 
@@ -27,11 +42,10 @@ export default function Register() {
                 console.error(error)
             })
             alert("USUARIO CADASTRADO!!")
-        }else{
-            alert("SENHA PRECISA SER IGUAL")
         }
     } 
 
+    const toggleVisiblePassword = () => setShowPassword(!showPassword)
 
     return (
 
@@ -40,11 +54,12 @@ export default function Register() {
 
                 <Header/>
 
-                <main className="">
+                <main>
                     <div>
-                        <h1 className="">Faça seu cadastro!</h1>
+                        <h1>Faça seu cadastro!</h1>
                         <p>FAÇA SEU CADASTRO PARA INICIAR USO DA SUA CONTA</p>
                     </div>
+                    
 
                     <form className="">
                         <input
@@ -68,37 +83,32 @@ export default function Register() {
                             className=""
                             onChange={(e) => { setDateBirth(e.target.value) }} />
 
-                        <input
-                            type="password"
-                            placeholder="senha"
-                            value={password}
+                        <div className="password">
+                            <input
+                                type={showPassword ? "text" : "password"}
+                                placeholder="Senha"
+                                value={password}
+                                onChange={(e) => setPassword(e.target.value)}
+                            />
+                            <Eye size={32} onClick={toggleVisiblePassword} className="password-icon"/>
+                        </div>
 
-                            onChange={(e) => setPassword(e.target.value)}
+                        <div className="password">
+                            <input
+                                type={showPassword ? "text" : "password"}
+                                placeholder="Confirmar senha"
+                                value={checkPassword}
+                                onChange={(e) => setCheckPassword(e.target.value)}
+                            />
+                            <Eye size={32} onClick={toggleVisiblePassword} className="password-icon"/>
+                        </div>
 
-                            className=""
-                        />
-
-                        <input
-                            type="password"
-                            placeholder="senha de confimação"
-                            value={checkPassword}
-
-                            onChange={(e) => setCheckPassword(e.target.value)}
-
-                            className=""
-                        />
-
-
-                        {/* <PasswordInputWithToggle typePassword="Senha"/> */}
-
-                        {/* <PasswordInputWithToggle typePassword="Confirmar senha"/> */}
-
-                        <button className="btn-register" onClick={handleRegister}>CADASTRAR</button>
+                        <button type="submit" className="btn-register" onClick={handleRegister}>CADASTRAR</button>
                     </form>
 
                 </main>
 
-                <footer>© 2022. - 2023 Todos os direitos reservados. TecnoPlay</footer>
+                <footer>© 2022 - 2023 Todos os direitos reservados. TecnoPlay</footer>
             </div>
 
             

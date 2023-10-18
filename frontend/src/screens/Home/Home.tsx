@@ -1,10 +1,12 @@
 
-import { useEffect, useState } from 'react'
 import Navbar from '../../components/Navbar/Navbar'
 import Userbar from '../../components/UserBar/Userbar'
-import './style.css'
-import { instance } from '../../axios-instance'
 
+import './style.css'
+
+import { useEffect, useState } from 'react'
+import { instance } from '../../axios-instance'
+ 
 interface Quizzes {
     id: string,
     materia: string,

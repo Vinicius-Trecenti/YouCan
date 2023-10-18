@@ -5,7 +5,7 @@ import './style.css'
 
 export default function Quizzes() {
     return (
-        <div className="screen">
+        <div className="quizzes">
             <Navbar />
 
             <main>

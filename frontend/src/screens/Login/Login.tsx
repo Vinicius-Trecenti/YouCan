@@ -2,7 +2,8 @@ import { useState } from "react"
 import { instance } from "../../axios-instance"
 import './style.css'
 
-import {Link} from 'react-router-dom'
+// import {Link} from 'react-router-dom'
+import Header from "../../components/Header/Header"
 
 export default function Login() {
 
@@ -25,19 +26,9 @@ export default function Login() {
     }
 
     return (
-        <div className="screen">
+        <div className="login">
             <div className="container">
-                <header>
-
-                    <img src="assets/logo.svg" alt="logo da empresa" />
-
-                    <div className="">
-                        <p>Possui conta?</p>
-                        <button>
-                            <Link to='/register'>Sign Up</Link>  
-                        </button>
-                    </div>
-                </header>
+                <Header />
 
                 <main>
                     <div>
@@ -67,6 +58,7 @@ export default function Login() {
 
                         <button
                             onClick={handleLogin}
+                            className="btn-login"
                         >
                             ENTRAR
                         </button>

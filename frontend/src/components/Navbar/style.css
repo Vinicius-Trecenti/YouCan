@@ -1,4 +1,4 @@
-nav {
+.nav {
     padding: 60px;
     
     display: flex;
@@ -15,18 +15,18 @@ nav {
     left: 0;
 }
 
-.logo {
+.nav .logo {
     display: flex;
     align-items: center;
     gap: 20px;
 }
 
-.logo img {
+.nav .logo img {
     height: 85px;
     width: auto;
 }
 
-.pages {
+.nav .pages {
     display: flex;
     flex-direction: column; 
     gap: 28px;

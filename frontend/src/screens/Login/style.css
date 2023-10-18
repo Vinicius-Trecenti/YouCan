@@ -1,25 +1,46 @@
-.screen {
+.login {
     display: flex;
-    height: 100vh;
     width: 100vw;
 }
 
- .container {
+.login .container {
+    padding: 40px 60px;
     display: flex;
-     flex: 2; 
-    
     flex-direction: column;
-    background-color: #F1F4FE;
-    padding: 60px 40px;
+    justify-content: space-between;
+    align-items: center;
+    gap: 87.5px;
 } 
 
-header {
+.login main {
     display: flex;
     align-items: center;
+    flex-direction: column;
+    gap: 60px;
+    text-align: center;
+
 }
 
-.banner img {
-    width: auto;
-    max-height: 100%;
-    object-fit: contain;
+.login form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 550px;
+}
+
+.login form input {
+    height: 62px;
+    width: 100%;
+    padding: 20px 24px;
+    border-radius: 4px;
+    border: 1px solid #616161;
+    background-color: #F1F4FE;
+    font-size: 20px;
+}
+
+.login form .btn-login {
+    border-radius: 4px;
+    background: #118AB2;
+    color: #F1F4FE;
+    padding: 16px 24px;   
 }

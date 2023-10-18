@@ -34,7 +34,7 @@ export default function Home() {
 
     return (
         <>
-            <div className="screen">
+            <div className="home">
                 <Navbar />
 
                 <main>

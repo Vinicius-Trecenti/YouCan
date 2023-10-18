@@ -1,11 +1,11 @@
-.screen {
+.home {
     display: flex;
     background-color: #F1F4FE;
     width: 100vw;
     min-height: 100vh;
 }
 
-main {
+.home main {
     display: flex;
     flex-direction: column;
     gap: 30px;
@@ -16,13 +16,13 @@ main {
     margin-left: 380px;
 }   
 
-.title-and-search {
+.home .title-and-search {
     display: flex;
     align-items: center;
     justify-content: space-between;
 }
 
-.title-and-search .search {
+.home .title-and-search .search {
     width: 540px;
     border-radius: 12px;
     background-color: #EDEDED;
@@ -30,13 +30,13 @@ main {
     color: #073B4C;
 }
 
-.quizzes {
+.home .quizzes {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(49%, 1fr));
     grid-gap: 10px;
 }
 
-.quiz {
+.home .quiz {
     display: flex;
     flex-direction: column;
     
@@ -50,7 +50,7 @@ main {
     border-radius: 8px;
 }
 
-.quiz .quiz-infos {
+.home .quiz .quiz-infos {
     display: flex;
     justify-content: space-between;
     align-items: end;

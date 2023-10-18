@@ -3,7 +3,7 @@ import './style.css'
 
 export default function Navbar() {
     return (
-        <nav>
+        <nav className='nav'>
             <div className='logo'>
                 <img src="assets/logo.svg" alt="logo" />
                 <h1>YouCan</h1>

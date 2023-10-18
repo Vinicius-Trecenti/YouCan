@@ -1,18 +1,18 @@
-header{
+.header {
     display: flex;
     justify-content: space-between;
     width: 100%;
 }
 
-header .message-btn{
+.header .message-btn{
     display: flex;
     justify-content: start;
-    align-items: center;
+    align-items: baseline;
     gap: 10px;
 }
 
-header .message-btn .btn-sign{
+.header .message-btn .btn-sign{
     color: #F1F4FE;
     background-color: #073B4C;
-    
+    border-radius: 8px;
 }

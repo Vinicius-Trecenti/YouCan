@@ -1,9 +1,9 @@
-.screen {
+.register {
     display: flex;
     width: 100vw;
 }
 
-.container {
+.register .container {
     padding: 40px 60px;
     display: flex;
     flex-direction: column;
@@ -13,7 +13,7 @@
 
 }
 
-main {
+.register .main {
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -22,14 +22,14 @@ main {
 
 }
 
-form {
+.register form {
     display: flex;
     flex-direction: column;
     gap: 10px;
     width: 550px;
 }
 
-form input {
+.register form input {
     height: 62px;
     width: 100%;
     padding: 20px 24px;
@@ -39,20 +39,20 @@ form input {
     font-size: 20px;
 }
 
-form input::placeholder, input[type="date"]::-webkit-calendar-picker-indicator{
+.register form input::placeholder, input[type="date"]::-webkit-calendar-picker-indicator{
     color: #616161;
     
 }
 
-form .password {
+.register form .password {
     display: flex;
 }
 
-form .password-icon {
+.register form .password-icon {
     position: absolute;
 }
 
-form .btn-register {
+.register form .btn-register {
     border-radius: 4px;
     background: #118AB2;
     color: #F1F4FE;

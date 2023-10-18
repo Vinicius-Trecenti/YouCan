@@ -49,12 +49,12 @@ export default function Register() {
 
     return (
 
-        <div className="screen">
+        <div className="register">
             <div className="container">
 
                 <Header/>
 
-                <main>
+                <main className="main">
                     <div>
                         <h1>Faça seu cadastro!</h1>
                         <p>FAÇA SEU CADASTRO PARA INICIAR USO DA SUA CONTA</p>

@@ -1,11 +1,11 @@
-.screen {
+.quizzes {
     display: flex;
     background-color: #F1F4FE;
     width: 100vw;
     min-height: 100vh;
 }
 
-main {
+.quizzes main {
     display: flex;
     flex-direction: column;
     gap: 30px;
@@ -15,13 +15,13 @@ main {
     margin-left: 380px;
 }   
 
-.title-and-search {
+.quizzes .title-and-search {
     display: flex;
     align-items: center;
     justify-content: space-between;
 }
 
-.title-and-search .search {
+.quizzes .title-and-search .search {
     width: 540px;
     border-radius: 12px;
     background-color: #EDEDED;
@@ -29,13 +29,13 @@ main {
     color: #073B4C;
 }
 
-section {
+.quizzes section {
     display: flex;
     flex-direction: column;
     gap: 20px;
 }
 
-section .quiz {
+.quizzes section .quiz {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -44,7 +44,7 @@ section .quiz {
     border-bottom: 1px solid #073B4C;
 }
 
-section .quiz .image-and-title {
+.quizzes section .quiz .image-and-title {
     display: flex;
     gap: 28px;
 
@@ -52,15 +52,15 @@ section .quiz .image-and-title {
     align-items: center;
 }
 
-.level-easy {
+.quizzes .level-easy {
     color: #06D6A0;
 }
 
-.level-medium {
+.quizzes .level-medium {
     color: #FFD166;
 }
 
-.level-high {
+.quizzes .level-high {
     color: #FF3D3D;
 }
 

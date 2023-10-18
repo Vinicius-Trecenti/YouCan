@@ -1,12 +1,19 @@
 .screen {
-
+    display: flex;
+    background-color: #F1F4FE;
+    width: 100vw;
+    height: 100vh;
+    max-width: 100%;
 }
+
 
 .progress{
     display: inline-flex;
     flex-direction: column;
     align-items: flex-start;
     gap: 12px;
+    padding-left: 200px;
+    
 }
 
 .info{

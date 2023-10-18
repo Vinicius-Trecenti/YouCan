@@ -2,63 +2,55 @@ import { useState } from "react"
 import { instance } from "../../axios-instance"
 import './style.css'
 
-<<<<<<< HEAD
 // import {Link} from 'react-router-dom'
 import Header from "../../components/Header/Header"
-=======
-import {Link} from 'react-router-dom'
-import {useNavigation} from 'react-router-dom'
-import { User } from "@phosphor-icons/react"
-
-
-interface User{
-    id:number
-}
->>>>>>> 2f65d1a99480d228a6d77c522621fc8d56cf96cb
+import { Navigate } from "react-router-dom"
 
 export default function Login() {
 
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
 
-    const navigate = useNavigation()
+    // const navigate = useNavigation()
     // DAR UM navigate('/')
 
     //funcao que popula o response com os dados do banco de dados 
-    const [dateUser, setdateUser] = useState() //<User>()
+    // const [dateUser, setdateUser] = useState() //<User>()
 
-
+    const navigateToHome = () => {
+        return <Navigate to="home" />
+    }
 
     const handleSend = async (event: { preventDefault: () => void }) => {
         event.preventDefault()
 
-        if(validateFormFields()){
+        if (validateFormFields()) {
             const response = await instance
-            .post('/login', {
-                email,
-                password
-            })
-            .catch((error) => {
-                console.error(error)
-            })
+                .post('/login', {
+                    email,
+                    password
+                })
+                .catch((error) => {
+                    console.error(error)
+                })
 
-            
-            setdateUser(response?.data)
-            console.log(response?.data)
-            
-            
-            // checkLogin()
-            
-        } 
+            // setdateUser(response?.data)
+            if (response?.status == 200) {
+                navigateToHome
+
+            }
+
+            alert("Dados Inválidos!")
+        }
 
     }
 
     const validateFormFields = () => {
-        if (email === "" || password ==="") {
+        if (email === "" || password === "") {
             alert("Informe todos os campos!")
             return false
-            
-        } 
+
+        }
         return true
     }
 
@@ -74,7 +66,7 @@ export default function Login() {
     return (
         <div className="login">
             <div className="container">
-                <Header />
+                <Header pathRoute="register" />
 
                 <main>
                     <div>
@@ -102,28 +94,20 @@ export default function Login() {
                         />
 
 
-<<<<<<< HEAD
                         <button
-                            onClick={handleLogin}
+                            onClick={handleSend}
                             className="btn-login"
                         >
                             ENTRAR
-=======
-                        <button onClick={handleSend}>
-                            <Link to='home'>Entrar</Link>
->>>>>>> 2f65d1a99480d228a6d77c522621fc8d56cf96cb
                         </button>
                     </form>
                 </main>
 
-                
+
                 <footer>© 2022. - 2023 Todos os direitos reservados. TecnoPlay</footer>
             </div>
-            <div className="banner">
-                <img src="assets/banner.svg" alt="banner" />
-            </div>
 
-
+            <img src="assets/banner.svg" alt="banner" />
         </div>
     )
 }

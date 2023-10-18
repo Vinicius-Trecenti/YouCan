@@ -1,4 +1,4 @@
-import {Outlet} from 'react-router-dom'
+
 // import Register from "./screens/Resgister/Register";
 
 // import CreateQuiz from "./screens/CreateQuiz/CreateQuiz";

@@ -1,9 +1,19 @@
 .screen {
     display: flex;
+    flex-direction: column;
     background-color: #F1F4FE;
-    width: 100vw;
-    height: 100vh;
+    width: 100%;
+    height: 100%;
     max-width: 100%;
+}
+
+main{
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    flex: 1;
+    padding: 0 0 0 0;
+    margin-left: 0px;
 }
 
 
@@ -11,8 +21,6 @@
     display: inline-flex;
     flex-direction: column;
     align-items: flex-start;
-    gap: 12px;
-    padding-left: 200px;
     
 }
 
@@ -20,20 +28,20 @@
     display: flex;
     align-items: flex-start;
     gap: 12px;
+    width: 100%;
+    justify-content: space-around;
 }
 
 .statement{
     display: flex;
     width: 100%;
+    max-width: 100%;
     padding: 103px 410px;
     justify-content: center;
     align-items: center;
-    gap: 10px;
 
     background: rgba(0, 102, 255, 0.26);
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-
-
 }
 
 .answers{
@@ -45,7 +53,7 @@
     gap: 40px;
     flex-wrap: wrap;
     margin: auto;
-    margin-top: 36px;
+    /* margin-top: 36px; */
 }
 
 .button{

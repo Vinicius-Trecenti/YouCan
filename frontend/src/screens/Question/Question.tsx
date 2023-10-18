@@ -3,8 +3,6 @@ import HeaderUser from "../../components/HeaderUser/HeaderUser"
 import "./style.css"
 import { useState } from 'react';
 import axios from 'axios';
-import ProgressBar from './ProgressBar';
-
 
 export default function Question() {
     const [data, setData] = useState(null);
@@ -20,22 +18,25 @@ export default function Question() {
             } else {
                 setButtonColor('red');
             }
+            onclick
         } catch (error) {
             console.error(error);
         }
-    };
+    }
+    ;
 
     return (
         <div className="screen">
             <div>
                 <HeaderUser />
             </div>
-
-            <main>
+                
+            <main className="main">
                 <div className='progress'>
                     <div className='info'>
-                        <h2>materia - materia</h2>
-                        <h2>x/10</h2>
+                        <div><h2>materia - materia</h2></div>
+                        <div><h2>x/10</h2></div>
+                        <div></div>
                     </div>
                     <div>
                         {/* barra mto louca */}
@@ -47,24 +48,35 @@ export default function Question() {
                 </div>
 
                 <div className="answers">
-                    <button className="button" >
-                        <h2>A.</h2>
-                        <h2>alternativa</h2>
-                    </button>
-                    <button className="button" >
-                        <h2>A.</h2>
-                        <h2>alternativa</h2>
-                    </button>
-                    <button className="button" >
-                        <h2>A.</h2>
-                        <h2>alternativa</h2>
-                    </button>
-                    <button className="button" >
+                    <button onClick={handleButtonClick}
+                            className="button"
+                            style={{backgroundColor: buttonColor}}>
                         <h2>A.</h2>
                         <h2>alternativa</h2>
                     </button>
 
-                    <div>
+                    <button onClick={handleButtonClick}
+                            className="button"
+                            style={{backgroundColor: buttonColor}}>
+                        <h2>B.</h2>
+                        <h2>alternativa</h2>
+                    </button>
+                    
+                    <button onClick={handleButtonClick}
+                            className="button"
+                            style={{backgroundColor: buttonColor}}>
+                        <h2>C.</h2>
+                        <h2>alternativa</h2>
+                    </button>
+
+                    <button onClick={handleButtonClick}
+                            className="button"
+                            style={{backgroundColor: buttonColor}}>
+                        <h2>D.</h2>
+                        <h2>alternativa</h2>
+                    </button>
+
+                    {/* <div>
                         <button
                             onClick={handleButtonClick}
                             style={{ backgroundColor: buttonColor }}
@@ -72,7 +84,7 @@ export default function Question() {
                             Verificar Dados
                         </button>
                         <p>Dados do Banco de Dados: {data}</p>
-                    </div>
+                    </div> */}
 
                 </div>
             </main>

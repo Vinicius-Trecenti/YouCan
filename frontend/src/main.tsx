@@ -6,6 +6,7 @@ import {  RouterProvider, createBrowserRouter } from 'react-router-dom'
 import Login from './screens/Login/Login.tsx'
 import Register from './screens/Resgister/Register.tsx'
 import Home from './screens/Home/Home.tsx'
+import Question from './screens/Question/Question.tsx'
 
 const router = createBrowserRouter([
   {
@@ -19,6 +20,10 @@ const router = createBrowserRouter([
   {
     path: 'home',
     element: <Home/>
+  },
+  {
+    path: 'question',
+    element: <Question/>
   },
 
   //ROTAS ANINHADAS - QUANDO DEPENDE DE UM ID POR EXEMPLO, POSSUI UM IDENTIFICADOR UNICO

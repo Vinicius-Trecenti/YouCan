@@ -7,13 +7,12 @@
     padding: 40px 60px;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
     align-items: center;
     gap: 87.5px;
 
 }
 
-.register .main {
+.register main {
     display: flex;
     align-items: center;
     flex-direction: column;

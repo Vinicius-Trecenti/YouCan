@@ -51,7 +51,7 @@ export default function Register() {
         <div className="register">
             <div className="container">
 
-                <Header/>
+                <Header pathRoute="/"/>
 
                 <main className="main">
                     <div>
@@ -60,7 +60,7 @@ export default function Register() {
                     </div>
                     
 
-                    <form className="">
+                    <form>
                         <input
                             type="text"
                             placeholder="Username"

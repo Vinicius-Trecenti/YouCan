@@ -2,6 +2,8 @@ import { useState } from "react"
 import { instance } from "../../axios-instance"
 import './style.css'
 
+import {Link} from 'react-router-dom'
+
 export default function Login() {
 
     const [email, setEmail] = useState('')
@@ -31,7 +33,9 @@ export default function Login() {
 
                     <div className="">
                         <p>Possui conta?</p>
-                        <button>Sign Up</button>
+                        <button>
+                            <Link to='/register'>Sign Up</Link>  
+                        </button>
                     </div>
                 </header>
 

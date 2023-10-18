@@ -2,18 +2,38 @@ import { useState } from "react"
 import { instance } from "../../axios-instance"
 import './style.css'
 
+<<<<<<< HEAD
 // import {Link} from 'react-router-dom'
 import Header from "../../components/Header/Header"
+=======
+import {Link} from 'react-router-dom'
+import {useNavigation} from 'react-router-dom'
+import { User } from "@phosphor-icons/react"
+
+
+interface User{
+    id:number
+}
+>>>>>>> 2f65d1a99480d228a6d77c522621fc8d56cf96cb
 
 export default function Login() {
 
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
 
-    const handleLogin = async (event: { preventDefault: () => void }) => {
+    const navigate = useNavigation()
+    // DAR UM navigate('/')
+
+    //funcao que popula o response com os dados do banco de dados 
+    const [dateUser, setdateUser] = useState() //<User>()
+
+
+
+    const handleSend = async (event: { preventDefault: () => void }) => {
         event.preventDefault()
 
-        const response = await instance
+        if(validateFormFields()){
+            const response = await instance
             .post('/login', {
                 email,
                 password
@@ -22,8 +42,34 @@ export default function Login() {
                 console.error(error)
             })
 
-        console.log(response?.data)
+            
+            setdateUser(response?.data)
+            console.log(response?.data)
+            
+            
+            // checkLogin()
+            
+        } 
+
     }
+
+    const validateFormFields = () => {
+        if (email === "" || password ==="") {
+            alert("Informe todos os campos!")
+            return false
+            
+        } 
+        return true
+    }
+
+    //dataUser salvando o login que vem do banco
+    // const checkLogin = () => {
+    //     if(dateUser == "" ){
+    //         alert("logado!")
+    //     }else{
+    //         alert("Dados incorretos")
+    //     }
+    // }
 
     return (
         <div className="login">
@@ -56,11 +102,16 @@ export default function Login() {
                         />
 
 
+<<<<<<< HEAD
                         <button
                             onClick={handleLogin}
                             className="btn-login"
                         >
                             ENTRAR
+=======
+                        <button onClick={handleSend}>
+                            <Link to='home'>Entrar</Link>
+>>>>>>> 2f65d1a99480d228a6d77c522621fc8d56cf96cb
                         </button>
                     </form>
                 </main>

@@ -25,7 +25,6 @@ export default function Register() {
         } else if (password != checkPassword) {
             alert("Insira os campos de senha corretamente!")
             return false
-
         }
 
         return true

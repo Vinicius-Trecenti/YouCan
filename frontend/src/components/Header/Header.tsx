@@ -10,7 +10,7 @@ export default function Header({ pathRoute }: Rota) {
     return (
         <header className="header">
             <div>
-                <img src="assets/logo.svg" alt="logo da empresa" />
+                <img src="src/assets/logo.svg" alt="logo da empresa" />
             </div>
 
             <div className="message-btn">

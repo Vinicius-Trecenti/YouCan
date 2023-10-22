@@ -1,18 +1,19 @@
 import { House, Trophy, ClockCounterClockwise, Play, Plus } from '@phosphor-icons/react'
 import './style.css'
+import { Link } from 'react-router-dom'
 
 export default function Navbar() {
     return (
         <nav className='nav'>
             <div className='logo'>
-                <img src="assets/logo.svg" alt="logo" />
+                <img src="../src/assets/logo.svg" alt="logo" />
                 <h1>YouCan</h1>
             </div>
 
             <div className='pages'>
-                <a href=""><House size={32} color='#073B4C'/>Home</a>
-                <a href=""><Trophy size={32} color='#073B4C'/>Ranking</a>
-                <a href=""><ClockCounterClockwise size={32} color='#073B4C'/>Histórico</a>
+                <Link to={'/home/:id'}><House size={32} color='#073B4C'/>Home</Link> 
+                <Link to={'/ranking/:id'}><Trophy size={32} color='#073B4C'/>Ranking</Link>
+                <Link to={'/home/:id'}><ClockCounterClockwise size={32} color='#073B4C'/>Histórico</Link>
             </div>
 
             <div className='buttons'>

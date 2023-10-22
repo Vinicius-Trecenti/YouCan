@@ -19,10 +19,10 @@ router.post('/login', async (req, res) => {
     const result = await database.loginAuth(email, password)
 
     if (result[0].count == 0) {
-        return res.status(401).json({ message: "Credenciais inválidas!"})
+        res.status(401).json({ message: "Credenciais inválidas!"})
+    } else {
+        res.status(200).json({ message: "Parametros recebidos", id: result[0].id})
     }
- 
-    res.json({ message: "Parametros recebidos", id: result[0].id})
 })
 
 // Tela de cadastro

@@ -26,7 +26,7 @@ export default function Question() {
     ;
 
     return (
-        <div className="screen">
+        <div className="question">
             <div>
                 <HeaderUser />
             </div>

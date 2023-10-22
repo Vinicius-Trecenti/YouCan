@@ -5,7 +5,9 @@ import Userbar from '../../components/UserBar/Userbar'
 import './style.css'
 
 import { useEffect, useState } from 'react'
-import { instance } from '../../axios-instance'
+import { instance } from '../../utils/axios-instance'
+import { useParams } from 'react-router-dom'
+// import { useNavigate, useParams } from 'react-router-dom'
  
 interface Quizzes {
     id: string,
@@ -16,6 +18,10 @@ interface Quizzes {
 
 export default function Home() {
     const [quizzes, setQuizzes] = useState<Quizzes[]>([])
+    const { userID } = useParams()
+    
+    console.log(userID)
+    // const navigate = useNavigate()
 
     useEffect(() => {
         const fetchData = async () => {
@@ -29,6 +35,7 @@ export default function Home() {
             }
         }
 
+        console.log('data')
         fetchData()
     }, [])
 

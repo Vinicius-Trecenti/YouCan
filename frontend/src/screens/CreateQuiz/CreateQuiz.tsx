@@ -6,7 +6,7 @@ export default function CreateQuiz() {
         <div className='screen'>
             <div className='navbar'>
                 <div className='logo'>
-                    <img src="assets/logo.svg" alt="logo" />
+                    <img src="src/assets/logo.svg" alt="logo" />
                     <h1>YouCan</h1>
                 </div>
 

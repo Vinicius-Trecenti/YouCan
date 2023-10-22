@@ -1,6 +1,6 @@
 
 import { useState } from "react"
-import { instance } from "../../axios-instance"
+import { instance } from "../../utils/axios-instance"
 import { Eye } from "@phosphor-icons/react"
 
 import Header from "../../components/Header/Header"
@@ -111,7 +111,7 @@ export default function Register() {
             </div>
 
             
-            <img src="assets/banner.svg" className="" alt="banner" />
+            <img src="../src/assets/banner.svg" className="" alt="banner" />
             
 
         </div>

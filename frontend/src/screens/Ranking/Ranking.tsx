@@ -4,7 +4,7 @@ import './style.css'
 
 export default function Ranking() {
     return (
-        <div className="screen">
+        <div className="ranking">
             <Navbar />
 
             <main>
@@ -16,7 +16,7 @@ export default function Ranking() {
                     <div className="user-ranking first-place">
                         <h2>1. </h2>
                         <div className="photo-and-username">
-                            <img src="assets/user.svg" alt="" />
+                            <img src="../src/assets/user.svg" alt="" />
                             <h2>Lucas</h2>
                         </div>
                         <h2>3245</h2>
@@ -25,7 +25,7 @@ export default function Ranking() {
                     <div className="dark-blue user-ranking ">
                         <h2>2. </h2>
                         <div className="photo-and-username">
-                            <img src="assets/user.svg" alt="" />
+                            <img src="../src/assets/user.svg" alt="" />
                             <h2>Lucas</h2>
                         </div>
                         <h2>3245</h2>
@@ -34,7 +34,7 @@ export default function Ranking() {
                     <div className="dark-blue user-ranking ">
                         <h2>2. </h2>
                         <div className="photo-and-username">
-                            <img src="assets/user.svg" alt="" />
+                            <img src="../src/assets/user.svg" alt="" />
                             <h2>Lucas</h2>
                         </div>
                         <h2>3245</h2>
@@ -43,7 +43,7 @@ export default function Ranking() {
                     <div className="dark-blue user-ranking ">
                         <h2>2. </h2>
                         <div className="photo-and-username">
-                            <img src="assets/user.svg" alt="" />
+                            <img src="../src/assets/user.svg" alt="" />
                             <h2>Lucas</h2>
                         </div>
                         <h2>3245</h2>
@@ -52,7 +52,7 @@ export default function Ranking() {
                     <div className="dark-blue user-ranking ">
                         <h2>2. </h2>
                         <div className="photo-and-username">
-                            <img src="assets/user.svg" alt="" />
+                            <img src="../src/assets/user.svg" alt="" />
                             <h2>Lucas</h2>
                         </div>
                         <h2>3245</h2>

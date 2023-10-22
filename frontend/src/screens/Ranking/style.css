@@ -1,4 +1,4 @@
-.screen {
+.ranking {
     display: flex;
     background-color: #F1F4FE;
     width: 100vw;
@@ -6,7 +6,7 @@
     
 }
 
-main {
+.ranking main {
     display: flex;
     flex-direction: column;
     gap: 40px;
@@ -17,18 +17,18 @@ main {
     margin-left: 380px;
 }
 
-main h1 {
+.ranking main h1 {
     text-align: center;
 }
 
-section {
+.ranking section {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 20px;
 }
 
-section .user-ranking {
+.ranking section .user-ranking {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -38,24 +38,24 @@ section .user-ranking {
     border-radius: 40px; 
 }
 
-section .user-ranking h2 {
+.ranking section .user-ranking h2 {
     color: #F1F4FE;
 }
 
-section .user-ranking .photo-and-username {
+.ranking section .user-ranking .photo-and-username {
     display: flex;
     gap: 24px;
     align-items: center;
 }
 
-section .user-ranking img {
+.ranking section .user-ranking img {
     width: 80px;
 }
 
-.first-place {
+.ranking .first-place {
     background-color: #06D6A0;
 }
 
-.dark-blue {
+.ranking .dark-blue {
     background-color: #073B4C;
 }

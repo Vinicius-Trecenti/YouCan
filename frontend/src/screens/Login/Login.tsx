@@ -1,55 +1,34 @@
-import { useState } from "react"
-import { instance } from "../../utils/axios-instance"
+import { useContext, useState } from "react"
+// import { instance } from "../../hooks/useApi" 
 import './style.css'
 
 // import {Link} from 'react-router-dom'
 import Header from "../../components/Header/Header"
 import { useNavigate } from "react-router-dom"
+import { AuthContext } from "../../contexts/Auth/AuthContext"
 
 
 export default function Login() {
+    const auth = useContext(AuthContext)
+    const navigate = useNavigate()
 
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
-    const navigate = useNavigate()
 
     const handleSend = async (event: { preventDefault: () => void }) => {
         event.preventDefault()
 
-        if (validateFormFields()) {
-            try {
-                const response = await instance
-                .post('/login', {
-                    email,
-                    password
-                })
+        if (email && password) {
+            const isLogged = await auth.signIn(email, password)
 
-                if (response?.status === 200) {
-                    
-                    const userID = response?.data.id
-
-                    if (userID != 0 && userID != null) {
-                        console.log('Login realizado!')
-                        navigate(`/home/${userID}`);
-                    } else {
-                        console.error("userID não está definido.");
-                    }
-                } 
-            
-            } catch (error) {
-                console.log(error)
+            if (isLogged) {
+                navigate(`/home`)
+            } else {
+                alert('Credenciais erradas!')
             }
-            
+        } else {
+            alert('Insira todos os campos!')
         }
-    }
-
-    const validateFormFields = () => {
-        if (email === "" || password === "") {
-            alert("Informe todos os campos!")
-            return false
-
-        }
-        return true
     }
 
     return (
@@ -68,20 +47,15 @@ export default function Login() {
                             type="text"
                             placeholder="Email"
                             value={email}
-                            onChange={(e) => {
-                                setEmail(e.target.value)
-                            }}
+                            onChange={(e) => setEmail(e.target.value)}
                         />
 
                         <input
                             type="password"
                             placeholder="Senha"
                             value={password}
-                            onChange={(e) => {
-                                setPassword(e.target.value)
-                            }}
+                            onChange={(e) => setPassword(e.target.value)}
                         />
-
 
                         <button
                             type="submit"
@@ -96,7 +70,7 @@ export default function Login() {
                 <footer>© 2022. - 2023 Todos os direitos reservados. TecnoPlay</footer>
             </div>
 
-            <img src="src/assets/banner.svg" alt="banner" />
+            <img src="../src/assets/banner.svg" alt="banner" />
         </div>
     )
 }

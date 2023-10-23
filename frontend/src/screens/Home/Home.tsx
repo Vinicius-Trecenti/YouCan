@@ -1,13 +1,9 @@
-
+import { useState } from 'react'
 import Navbar from '../../components/Navbar/Navbar'
 import Userbar from '../../components/UserBar/Userbar'
 
 import './style.css'
-
-import { useEffect, useState } from 'react'
-import { instance } from '../../utils/axios-instance'
-import { useParams } from 'react-router-dom'
-// import { useNavigate, useParams } from 'react-router-dom'
+ // import { useNavigate, useParams } from 'react-router-dom'
  
 interface Quizzes {
     id: string,
@@ -18,26 +14,25 @@ interface Quizzes {
 
 export default function Home() {
     const [quizzes, setQuizzes] = useState<Quizzes[]>([])
-    const { userID } = useParams()
     
-    console.log(userID)
+    setQuizzes([])
     // const navigate = useNavigate()
 
-    useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const response = await instance.get('/quizzes')
-                setQuizzes(response.data)
+    // useEffect(() => {
+    //     const fetchData = async () => {
+    //         try {
+    //             const response = await instance.get('/quizzes')
+    //             setQuizzes(response.data)
 
 
-            } catch (error) {
-                console.error(error)
-            }
-        }
+    //         } catch (error) {
+    //             console.error(error)
+    //         }
+    //     }
 
-        console.log('data')
-        fetchData()
-    }, [])
+    //     console.log('data')
+    //     fetchData()
+    // }, [])
 
     return (
         <>

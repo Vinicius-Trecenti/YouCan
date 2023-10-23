@@ -8,24 +8,26 @@ export const AuthProvider = ({ children } : { children: JSX.Element }) => {
     const  api = useApi()
 
     useEffect(() => {
+        const validateToken = async () => {
+            const storageData = localStorage.getItem('authToken')
+    
+            if (storageData) {
+                const data = await api.validateToken(storageData)
+                // const data: UserData = response.data
+    
+                console.log('dados: ', data.user)
+                console.log('validando token')
+                if (data.user) {
+                    setUser(data.user)
+                    console.log('token: ', data.token)
+                }
+            }
+        }
+
         validateToken()
     }, []) 
 
-    const validateToken = async () => {
-        const storageData = localStorage.getItem('authToken')
-
-        if (storageData) {
-            const data = await api.validateToken(storageData)
-            // const data: UserData = response.data
-
-            console.log('dados: ', data.user)
-            console.log('validando token')
-            if (data.user) {
-                setUser(data.user)
-                console.log('token: ', data.token)
-            }
-        }
-    }
+    
 
     const signIn = async (email: string, password: string) => {
         
@@ -53,7 +55,7 @@ export const AuthProvider = ({ children } : { children: JSX.Element }) => {
     }
 
     return (
-        <AuthContext.Provider value={{ user, signIn, signOut, validateToken}}>
+        <AuthContext.Provider value={{ user, signIn, signOut}}>
             { children }
         </AuthContext.Provider>
     )

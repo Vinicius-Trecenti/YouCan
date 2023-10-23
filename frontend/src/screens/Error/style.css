@@ -1,0 +1,19 @@
+.error{
+    align-items: center;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-top: 8%;
+}
+
+.btn-sign{
+    color: #F1F4FE;
+    background-color: #073B4C;
+    border-radius: 8px;
+    display: flex;
+}
+
+h2{
+    padding: 10px;
+}

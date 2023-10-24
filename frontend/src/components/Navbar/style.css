@@ -57,8 +57,13 @@
     gap: 28px;
 
     width: 100%;
-    border-radiu: 24px;
+    border-radius: 24px;
     padding: 8px 24px;
+    color: #F1F4FE;
+
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 700;
 }
 
 .btn-green {

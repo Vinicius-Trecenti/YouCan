@@ -11,9 +11,9 @@ export default function Navbar() {
             </div>
 
             <div className='pages'>
-                <Link to={'/home/:id'}><House size={32} color='#073B4C'/>Home</Link> 
-                <Link to={'/ranking/:id'}><Trophy size={32} color='#073B4C'/>Ranking</Link>
-                <Link to={'/home/:id'}><ClockCounterClockwise size={32} color='#073B4C'/>Histórico</Link>
+                <Link to={'/home'}><House size={32} color='#073B4C'/>Home</Link> 
+                <Link to={'/ranking'}><Trophy size={32} color='#073B4C'/>Ranking</Link>
+                <Link to={'/ranking'}><ClockCounterClockwise size={32} color='#073B4C'/>Histórico</Link>
             </div>
 
             <div className='buttons'>

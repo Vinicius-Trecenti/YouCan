@@ -17,9 +17,10 @@ export const AuthProvider = ({ children } : { children: JSX.Element }) => {
     
                 console.log('dados: ', data.user)
                 console.log('validando token')
+                
                 if (data.user) {
                     setUser(data.user)
-                    console.log('token: ', data.token)
+                    console.log('token: ', user?.id)
                 }
             }
         }

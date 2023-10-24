@@ -9,7 +9,7 @@ export const instance = axios.create({
 export const useApi = () => ({
     signIn: async (email: string, password: string) => {
         return {
-            user: { id: 3, username: 'lucas', email: 'lucas@gmail.com'},
+            user: { id: 3, username: 'Jonny', email: 'lucas@gmail.com'},
             token: '23525'
         }
 

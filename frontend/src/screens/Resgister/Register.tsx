@@ -1,10 +1,9 @@
 
 import { useState } from "react"
 import { instance } from "../../hooks/useApi" 
-import { Eye } from "@phosphor-icons/react"
+// import { Eye } from "@phosphor-icons/react"
 
 import Header from "../../components/Header/Header"
-
 
 import "./style.css"
 

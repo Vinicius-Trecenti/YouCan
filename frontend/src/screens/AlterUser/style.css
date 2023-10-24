@@ -1,0 +1,114 @@
+.AlterUser{
+    display: flex;
+    width: 100vw;
+    padding: 40px 60px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 87.5px;
+    
+}
+
+.AlterUser .btn-back{
+    border-radius: 4px;
+    background: #073B4C;
+    color: #F1F4FE;
+}
+
+.AlterUser .btn{
+    display: flex;
+    flex-direction: column;
+    
+}
+.AlterUser .btn .btn-back{
+    align-self:flex-end;
+}
+
+/* 
+.menu{
+    display: flex;
+    list-style:none;
+    border:1px solid #c0c0c0;
+    float:left;
+    
+}
+
+.menu li{
+    position:relative;
+    float:left;
+    border-right:1px solid #c0c0c0;
+}
+
+.menu li a{color:#333; text-decoration:none; padding:5px 10px; display:block;}
+
+
+.menu li a:hover{
+background:#333;
+color:#fff;
+-moz-box-shadow:0 3px 10px 0 #CCC;
+-webkit-box-shadow:0 3px 10px 0 #ccc;
+text-shadow:0px 0px 5px #fff;
+}
+
+.menu li  ul{
+    position:absolute;
+    top:25px;
+    left:0;
+    background-color:#fff;
+    display:none;
+}
+
+.menu li:hover ul, .menu li.over ul{display:block;}
+
+.menu li ul li{
+    border:1px solid #c0c0c0;
+    display:block;
+    width:150px;
+    } */
+
+.AlterUser main {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 60px;
+    text-align: center;
+
+}
+
+.AlterUser form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 550px;
+}
+
+.AlterUser form input {
+    height: 62px;
+    width: 100%;
+    padding: 20px 24px;
+    border-radius: 4px;
+    border: 1px solid #616161;
+    background-color: #F1F4FE;
+    font-size: 20px;
+}
+
+.AlterUser form input::placeholder, input[type="date"]::-webkit-calendar-picker-indicator{
+    color: #616161;
+    
+}
+
+.AlterUser form .password {
+    display: flex;
+}
+
+.AlterUser form .password-icon {
+    position: absolute;
+}
+
+.AlterUser form .btn-alter {
+    border-radius: 4px;
+    background: #118AB2;
+    color: #F1F4FE;
+    padding: 16px 24px;   
+}
+

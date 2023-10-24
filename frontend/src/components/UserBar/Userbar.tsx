@@ -7,7 +7,7 @@ import { useContext } from 'react'
 export default function Userbar() {
     const auth = useContext(AuthContext)
     return (
-        <Link to={'/alterar/usuario/:ïd'}>
+        <Link to={'/alterar/usuario/'}>
             <div className='bar-user'>
                 <img src="https://picsum.photos/seed/picsum/200/300" alt="" />
                 <h2>{auth.user?.username}</h2>

@@ -73,3 +73,11 @@
 .question .button h2{
     color: #F1F4FE;
 }
+
+.question .green{
+    background-color: green;
+}
+
+.question .red{
+    background-color: rgb(196, 43, 43);
+}

@@ -1,87 +1,60 @@
 .CreateQuizQuestion {
     display: flex;
-    flex-direction: column;
-    background-color: #f1f4fe;
     width: 100vw;
-    min-height: 100vh;
-
-    padding: 3.75rem;
-}
-
-.navbar {
-    display: flex;
-    width: 100%;
-    justify-content: space-between;
-    align-items: start;
-    margin-bottom: 5rem;
-}
-
-.logo {
-    display: flex;
-    align-items: center;
-    gap: 1.25rem;
-}
-
-.logo img {
-    height: 5.3rem;
-    width: auto;
-}
-
-section {
-    display: flex;
+    padding: 40px 60px;
     flex-direction: column;
-    gap: 1rem;
     align-items: center;
-    justify-content: space-between;
-
-    margin-top: 2rem;
-    width: 100%;
+    gap: 87.5px;
 }
 
-.quizname{
-    width: 100%;
-    padding: 1.5rem 1.25rem;
-    gap: 1.25rem;
-}
-
-.description{
-    display: flex;
-    height: 14.75rem;
-    padding:  1.25rem,  1.5rem; 
-    align-items: center;
-    gap: 0.625rem;
-    align-self: stretch;
-
-}
-
-main {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-    flex: 1;
-    padding: 3.75rem 3.75rem 0 3.75rem;
-    margin-right: 25rem;
-}   
-
-div label h2{
-    margin-bottom:1.25rem;
-   
-}
-
-.buttonNext{
-    display: flex;
-    width: 34rem;
-    padding: 1rem 1.5rem;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
+.CreateQuizQuestion .btn-back {
+    display: inline-flex;
+    padding: 8px 24px;
+    border-radius: 15px;
+    background: var(--Blue_dark, #073B4C);
     color: #F1F4FE;
-    background-color: #118AB2;
-    margin-top: 4.3rem;
+    margin-left: 750px;
+    line-height: 20px;
+    height: 40px;
+    
+}
+
+.CreateQuizQuestion main {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 60px;
+    text-align: center;
+}
+
+.CreateQuizQuestion form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 550px;
+}
+
+.CreateQuizQuestion form input::placeholder,
+input[type="date"]::-webkit-calendar-picker-indicator {
+    color: #616161;
 
 }
 
-.buttonPublicar{
+.CreateQuizQuestion div label h2 {
+    margin-bottom: 1.25rem;
+
+}
+
+
+.CreateQuizQuestion .btn-next {
+    border-radius: 4px;
+    background: #118AB2;
+    color: #F1F4FE;
+    padding: 16px 24px;
+    margin-top: 80px;
+}
+
+.buttonPublicar {
     display: flex;
     width: 34rem;
     padding: 1rem 1.5rem;
@@ -94,12 +67,4 @@ div label h2{
     margin-bottom: 1.5rem;
     font-size: 1.5rem;
 
-}
-
-
-form{
-    gap: 1.25rem;
-    padding: 1.25rem, 1.5rem ;
-    margin-bottom:1.25rem;
-    font-size: 1.5rem;
 }

@@ -12,6 +12,9 @@ import Ranking from './screens/Ranking/Ranking.tsx'
 import AlterUser from './screens/AlterUser/AlterUser.tsx'
 
 import './styles/global.css'
+import CreateQuizQuestion from './screens/CreateQuizQuestion/CreateQuizQuestion.tsx'
+import CreateQuizForm from './screens/CreateQuizForm/CreateQuizForm.tsx'
+import ResultQuiz from './screens/ResultQuiz/ResultQuiz.tsx'
 
 export default function App() {
     return (
@@ -25,7 +28,11 @@ export default function App() {
 					{/* <Route path='/historico/:id' element={<Hist} */}
 					<Route path='/questao' element={<Question />}/>
 					<Route path='/alterar/usuario/' element={<AlterUser />} />
+					<Route path='/create/question/' element={<CreateQuizQuestion />} />
+					<Route path='/create/form/' element={<CreateQuizForm />} />
+					<Route path='/result/quiz/' element={<ResultQuiz />} />
 					<Route path='*' element={<Error />}/>
+
 				{/* <Route path="/private" element={<RequireAuth><Private /></RequireAuth>} /> */}
 				</Routes>
 			</BrowserRouter>

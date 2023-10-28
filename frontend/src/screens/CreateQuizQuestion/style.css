@@ -1,105 +1,96 @@
 .CreateQuizQuestion {
     display: flex;
-    flex-direction: column;
-    background-color: #f1f4fe;
     width: 100vw;
-    min-height: 100vh;
-
-    padding: 3.75rem;
+    padding: 40px 60px;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
 }
 
-.navbar {
-    display: flex;
-    width: 100%;
-    justify-content: space-between;
-    align-items: start;
-    margin-bottom: 5rem;
+.CreateQuizQuestion .btn-back {
+    display: inline-flex;
+    padding: 8px 24px;
+    border-radius: 15px;
+    background: var(--Blue_dark, #073B4C);
+    color: #F1F4FE;
+    margin-left: auto;
+    line-height: 20px;
+    height: 40px;
+
 }
 
-.logo {
+.CreateQuizQuestion main {
     display: flex;
     align-items: center;
-    gap: 1.25rem;
+    flex-direction: column;
+    gap: 60px;
+    text-align: center;
 }
 
-.logo img {
-    height: 5.3rem;
-    width: auto;
-}
-
-section {
+.CreateQuizQuestion form {
     display: flex;
     flex-direction: column;
-    gap: 1rem;
-    align-items: center;
-    justify-content: space-between;
-
-    margin-top: 2rem;
-    width: 100%;
+    gap: 10px;
+    width: 550px;
 }
 
-.quizname{
+.CreateQuizQuestion .box {
     width: 100%;
-    padding: 1.5rem 1.25rem;
-    gap: 1.25rem;
-}
-
-.description{
-    display: flex;
-    height: 14.75rem;
-    padding:  1.25rem,  1.5rem; 
-    align-items: center;
-    gap: 0.625rem;
+    height: 62px;
+    padding: 20px 24px;
+    gap: 10px;
     align-self: stretch;
-
+    border-radius: 4px;
+    border: 1px solid var(--Gray_dark, #616161);
 }
 
-main {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-    flex: 1;
-    padding: 3.75rem 3.75rem 0 3.75rem;
-    margin-right: 25rem;
-}   
-
-div label h2{
-    margin-bottom:1.25rem;
-   
+.CreateQuizQuestion form input {
+    height: 62px;
+    width: 100%;
+    padding: 20px 24px;
+    border-radius: 4px;
+    border: 1px solid #616161;
+    background-color: #F1F4FE;
+    font-size: 20px;
 }
 
-.buttonNext{
+.CreateQuizQuestion form input::placeholder {
+    color: #616161;
+}
+
+.CreateQuizQuestion .btn-next {
+    border-radius: 4px;
+    background: #118AB2;
+    color: #F1F4FE;
+    padding: 16px 24px;
+    margin-top: 80px;
+}
+
+.CreateQuizQuestion .btn-add-question {
     display: flex;
-    width: 34rem;
-    padding: 1rem 1.5rem;
+    width: 550px;
+    padding: 16px 24px;
     justify-content: center;
     align-items: center;
     gap: 10px;
-    color: #F1F4FE;
+    margin-top: 80px;
+    border-radius: 4px;
     background-color: #118AB2;
-    margin-top: 4.3rem;
-
+    color: #F1F4FE;
+    font-size: 24px;
 }
 
-.buttonPublicar{
+.CreateQuizQuestion .btn-public-question {
     display: flex;
-    width: 34rem;
-    padding: 1rem 1.5rem;
+    width: 550px;
+    padding: 16px 24px;
     justify-content: center;
     align-items: center;
     gap: 10px;
-    color: #F1F4FE;
-    background-color: #06D6A0;
     margin-top: 24px;
-    margin-bottom: 1.5rem;
-    font-size: 1.5rem;
-
-}
-
-
-form{
-    gap: 1.25rem;
-    padding: 1.25rem, 1.5rem ;
-    margin-bottom:1.25rem;
-    font-size: 1.5rem;
+    border-radius: 4px;
+    background-color: #118AB2;
+    color: #F1F4FE;
+    font-size: 24px;
+    background-color: #06D6A0;
 }

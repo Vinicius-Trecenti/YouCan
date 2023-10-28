@@ -1,0 +1,20 @@
+.custom-progress-bar {
+    width: 100%;
+    background-color: #ccc;
+    text-align: center;
+    border-radius: 4px;
+    overflow: hidden;
+    margin-left: 180px;
+    margin-right: auto;
+  }
+  
+  .bar {
+    width: 0;
+    height: 100%;
+    text-align: center;
+    line-height: 30px;
+    color: white;
+    background-color: #007bff;
+    transition: width 0.3s ease-in-out;
+  }
+  

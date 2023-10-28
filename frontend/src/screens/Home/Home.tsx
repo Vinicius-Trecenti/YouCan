@@ -15,24 +15,6 @@ interface Quizzes {
 export default function Home() {
     const [quizzes, setQuizzes] = useState<Quizzes[]>([])
 
-    // const navigate = useNavigate()
-
-    // useEffect(() => {
-    //     const fetchData = async () => {
-    //         try {
-    //             const response = await instance.get('/quizzes')
-    //             setQuizzes(response.data)
-
-
-    //         } catch (error) {
-    //             console.error(error)
-    //         }
-    //     }
-
-    //     console.log('data')
-    //     fetchData()
-    // }, [])
-
     return (
         <div className="home">
             <Navbar />

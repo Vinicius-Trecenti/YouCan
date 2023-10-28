@@ -1,6 +1,8 @@
 import HeaderUser from "../../components/HeaderUser/HeaderUser"
 import { useState } from "react"
 import './style.css'
+import { Link } from 'react-router-dom'
+
 
 export default function AlterUser() {
     const [username, setUsername] = useState("")
@@ -16,24 +18,11 @@ export default function AlterUser() {
 
             <HeaderUser />
 
-
-
-            {/* <div className="menu">
-
-                <li><a href="#">Opções</a>
-                    <ul>
-                        <li><a href="#">Home</a></li>
-                        <li><a href="#">Sing Out</a></li>
-                    </ul>
-                </li>
-
-            </div> */}
-
-            <div className="btn">
-                <button className="btn-back">
-                    Voltar
-                </button>
-            </div>
+                <div className="btn">  
+                        <button className="btn-back">
+                            <Link to="/home">Voltar</Link>
+                        </button>
+                </div>
             
 
             <main>

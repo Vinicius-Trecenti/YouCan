@@ -4,11 +4,7 @@ const random = require('node:crypto')
 const jwt = require('jsonwebtoken')
 const bcript = require('bcrypt')
 
-
-
 const router = express.Router()
-
-
 
 router.get('/quizzes', async (req, res) => {
     const quizzes = await database.searchAll()
@@ -16,17 +12,15 @@ router.get('/quizzes', async (req, res) => {
     res.status(200).json(quizzes)
 })
 
+// validar token e enviar dados do usuario
 router.post('/validar', async(req, res) => {
-    console.log('chegou', req.body)
     const { token } = req.body
 
     const secret = process.env.SECRET
     const { id } = jwt.verify(token, secret)
-    const response = await database.userData(id.id)
-
-    const { username, email, dateBirth } = response
-
-    console.log(id, response)
+    const response = await database.userData(id)
+    console.log(response)
+    const { username, email, dateBirth } = response[0]
 
     res.status(200).json({ id, username, email, dateBirth })
 })
@@ -34,40 +28,34 @@ router.post('/validar', async(req, res) => {
 // Tela de login 
 router.post('/login', async (req, res) => {
     const { email, password } = req.body
-
     const result = await database.loginAuth(email, password)
 
-    if (result[0].count == 0) {
+    if (result[0].count === 0) {
         res.status(401).json({ message: "Credenciais inválidas!"})
-    } 
-
-    const { id, username, emailUser, dateBirth } = result[0]
-    const secret = process.env.SECRET
-    
-    try {
-        const token = jwt.sign(
-            {
-                id,
-            },
-            secret
-        )
-
+    } else {
+        const { id, username, emailUser, dateBirth } = result[0]
         
-
-        console.log(decodedToken.id)
-
-        console.log('token criado')
-        res.status(200).json({ user: {id, username, emailUser, dateBirth}, token })
-    } catch (error) {
-        res.status(500).json({ message: error })
+        try {
+            const secret = process.env.SECRET
+    
+            const token = jwt.sign(
+                {
+                    id,
+                },
+                secret
+            )
+    
+            console.log('usuário logado')
+            res.status(200).json({ user: {id, username, emailUser, dateBirth}, token })
+        } catch (error) {
+            res.status(500).json({ message: error })
+        }
     }
 })
 
 // Tela de cadastro
 router.post('/cadastro', async (req, res) => {
     const { username, email, dateBirth, password } = req.body                                     
-
-    console.log(username, email, dateBirth, password)
 
     await database.createUser(username, email, dateBirth, password)
 

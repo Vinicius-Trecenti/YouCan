@@ -3,7 +3,7 @@ const db = require('./db')
 module.exports = {
     userData: (id) => {
         return new Promise ((acept, rejected) => {
-            db.query('SELECT nome, email, nascimento FROM usuario WHERE id = ?', [id], (error, results) => {
+            db.query('SELECT nome as username, email, nascimento FROM usuario WHERE id = ?', [id], (error, results) => {
                 {error ? rejected(error) : acept(results)}
             })
         })
@@ -11,7 +11,7 @@ module.exports = {
 
     searchAll: () => {
         return new Promise ((acept, rejected) => {
-            db.query('SELECT *, COUNT(*) as total FROM quiz GROUP BY materia', (error, results) => {
+            db.query('SELECT *, COUNT(*) as total FROM materia GROUP BY nome', (error, results) => {
                 if (error) {
                     rejected(error)
                     return

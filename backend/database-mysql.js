@@ -1,6 +1,14 @@
 const db = require('./db')
 
 module.exports = {
+    userData: (id) => {
+        return new Promise ((acept, rejected) => {
+            db.query('SELECT nome, email, nascimento FROM usuario WHERE id = ?', [id], (error, results) => {
+                {error ? rejected(error) : acept(results)}
+            })
+        })
+    },
+
     searchAll: () => {
         return new Promise ((acept, rejected) => {
             db.query('SELECT *, COUNT(*) as total FROM quiz GROUP BY materia', (error, results) => {
@@ -16,7 +24,7 @@ module.exports = {
 
     loginAuth: (email, password) => {
         return new Promise ((acept, rejected) => {
-            db.query('SELECT count(*) as count, id FROM usuario WHERE email = ? AND senha = ?', [email, password], (error, results) => {
+            db.query('SELECT count(*) as count, id, nome as username, email as emailUser, nascimento as dateBirth FROM usuario WHERE email = ? AND senha = ?', [email, password], (error, results) => {
                 { error ? rejected(error) : acept(results)}
             })
         }) 

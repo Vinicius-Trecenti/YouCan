@@ -1,15 +1,34 @@
 const express = require('express')
 const database = require('./database-mysql')
 const random = require('node:crypto')
+const jwt = require('jsonwebtoken')
+const bcript = require('bcrypt')
+
 
 
 const router = express.Router()
+
 
 
 router.get('/quizzes', async (req, res) => {
     const quizzes = await database.searchAll()
 
     res.status(200).json(quizzes)
+})
+
+router.post('/validar', async(req, res) => {
+    console.log('chegou', req.body)
+    const { token } = req.body
+
+    const secret = process.env.SECRET
+    const { id } = jwt.verify(token, secret)
+    const response = await database.userData(id.id)
+
+    const { username, email, dateBirth } = response
+
+    console.log(id, response)
+
+    res.status(200).json({ id, username, email, dateBirth })
 })
 
 // Tela de login 
@@ -20,8 +39,27 @@ router.post('/login', async (req, res) => {
 
     if (result[0].count == 0) {
         res.status(401).json({ message: "Credenciais inválidas!"})
-    } else {
-        res.status(200).json({ message: "Parametros recebidos", id: result[0].id})
+    } 
+
+    const { id, username, emailUser, dateBirth } = result[0]
+    const secret = process.env.SECRET
+    
+    try {
+        const token = jwt.sign(
+            {
+                id,
+            },
+            secret
+        )
+
+        
+
+        console.log(decodedToken.id)
+
+        console.log('token criado')
+        res.status(200).json({ user: {id, username, emailUser, dateBirth}, token })
+    } catch (error) {
+        res.status(500).json({ message: error })
     }
 })
 

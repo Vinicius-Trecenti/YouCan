@@ -41,12 +41,19 @@ export const useApi = () => ({
     validateToken: async (token: string) => {
         console.log(token)
         const response = await instance.post('/validar', { token })
+        console.log(response.data)
 
         return response.data
     },
 
     showQuizzes: async () => {
-        const response = await instance.get('/quizzes')
+        const response = await instance.get('/materias')
+
+        return response.data
+    },
+
+    alterUser: async (id:any, username: any, password: string)  => {
+        const response = await instance.put('/alterar', {id, username, password})
 
         return response.data
     }

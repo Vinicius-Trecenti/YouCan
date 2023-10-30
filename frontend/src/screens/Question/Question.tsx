@@ -6,6 +6,8 @@ import axios from 'axios';
 import CustomProgressBar from "../../components/ProgressBar/CustomProgressBar";
 import '../../components/ProgressBar/ProgressBar.css'
 
+
+
 export default function Question() {
     const [clickedButton, setClickedButton] = useState(null);
     const [correctAnswer, setCorrectAnswer] = useState(2);
@@ -34,16 +36,13 @@ export default function Question() {
             </div>
 
             <main className="main">
-                <div className='progress'>
-                    <div className='info'>
+                 <div className='progress'> 
+                    <div className='info'> 
                         <div><h2>materia - materia</h2></div>
                         <div><h2>x/10</h2></div>
-                        <div></div>
-                    </div>
-                    
+                    </div> 
                     <CustomProgressBar progress={progress} />
-                    
-                </div>
+                </div> 
 
                 <div className="statement">
                     <h1>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptates laudantium et animi exercitationem, recusandae consectetur! Ut quia natus iure minus illo? Facere asperiores quod necessitatibus debitis sapiente. Ducimus, molestiae inventore.</h1>

@@ -15,6 +15,8 @@ import './styles/global.css'
 import CreateQuizQuestion from './screens/CreateQuizQuestion/CreateQuizQuestion.tsx'
 import CreateQuizForm from './screens/CreateQuizForm/CreateQuizForm.tsx'
 import ResultQuiz from './screens/ResultQuiz/ResultQuiz.tsx'
+import Quizzes from './screens/Quizzes/Quizzes.tsx'
+import CreateQuiz from './screens/CreateQuiz/CreateQuiz.tsx'
 
 export default function App() {
     return (
@@ -28,9 +30,11 @@ export default function App() {
 					{/* <Route path='/historico/:id' element={<Hist} */}
 					<Route path='/questao' element={<Question />}/>
 					<Route path='/alterar/usuario/' element={<AlterUser />} />
-					<Route path='/create/question/' element={<CreateQuizQuestion />} />
-					<Route path='/create/form/' element={<CreateQuizForm />} />
+					<Route path='/create/quiz/materia' element={<CreateQuiz />} />
+					<Route path='/create/quiz/question' element={<CreateQuizQuestion />} />
+					<Route path='/create/quiz/formulario' element={<CreateQuizForm />} />
 					<Route path='/result/quiz/' element={<ResultQuiz />} />
+					<Route path='/quizzes/' element={<Quizzes />} />
 					<Route path='*' element={<Error />}/>
 
 				{/* <Route path="/private" element={<RequireAuth><Private /></RequireAuth>} /> */}

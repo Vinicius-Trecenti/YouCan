@@ -1,17 +1,10 @@
-import Userbar from '../../components/UserBar/Userbar'
+import HeaderUser from '../../components/HeaderUser/HeaderUser'
 import './style.css'
 
 export default function CreateQuiz() {
     return (
-        <div className='screen'>
-            <div className='navbar'>
-                <div className='logo'>
-                    <img src="src/assets/logo.svg" alt="logo" />
-                    <h1>YouCan</h1>
-                </div>
-
-                <Userbar />
-            </div>
+        <div className='createQuiz'>
+            <HeaderUser />
 
             <main>
                 <h1>Criar quiz</h1>

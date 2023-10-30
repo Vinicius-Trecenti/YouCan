@@ -1,34 +1,45 @@
-import React, { useState } from 'react'
-import { CaretDown, CaretRight } from '@phosphor-icons/react'
-import './style.css'
+import { useContext, useState } from 'react'
+
+import { CaretDown, CaretRight, House, SignOut, User } from '@phosphor-icons/react'
 import { Link } from 'react-router-dom'
-import { ImHome3, ImUnlocked } from "react-icons/im";
 
+import { AuthContext } from '../../contexts/Auth/AuthContext';
 
-function Dropdown(){
+import './style.css'
 
+export default function Dropdown() {
+    const auth = useContext(AuthContext)
     const [isOpen, setIsOpen] = useState(false)
-    return(
+
+    const handleSignOut = () => {
+        auth.signOut()
+    }
+
+    return (
         <div className='drop'>
 
             <button onClick={() => setIsOpen((state) => !state)}>
 
                 {!isOpen ? (
-                    <CaretRight size={32} color='#073B4C'/>
+                    <CaretRight size={32} color='#073B4C' />
                 ) : (
-                    <CaretDown size={32} color='#073B4C'/>
+                    <CaretDown size={32} color='#073B4C' />
                 )}
             </button>
 
-            {isOpen &&(
+            {isOpen && (
                 <div className="">
                     <ul>
                         <Link to="/home">
-                            <li> <ImHome3/> Home</li>
+                            <li> <House /> Home</li>
                         </Link>
 
-                        <Link to="/">
-                            <li> <ImUnlocked/> Sing Out</li>
+                        <Link to="/alterar/usuario">
+                            <li> <User /> Alterar</li>
+                        </Link>
+
+                        <Link to="/" onClick={handleSignOut}>
+                            <li> <SignOut /> Sign Out</li>
                         </Link>
                     </ul>
 
@@ -38,5 +49,3 @@ function Dropdown(){
         </div>
     )
 }
-
-export default Dropdown;

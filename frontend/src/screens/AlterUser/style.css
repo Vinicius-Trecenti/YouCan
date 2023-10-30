@@ -4,31 +4,29 @@
     padding: 40px 60px;
     display: flex;
     flex-direction: column;
-    align-items: center;
     gap: 87.5px;
-    
 }
 
-.AlterUser .btn-back{
+/* .AlterUser .btn-back{
     border-radius: 4px;
     background: #073B4C;
     color: #F1F4FE;
-}
+} */
 
-.AlterUser .btn{
+/* .AlterUser .btn{
     display: flex;
     flex-direction: column;
     
 }
 .AlterUser .btn .btn-back{
     align-self:flex-end;
-}
+} */
 
-.menu li{
+/* .menu li{
     position:relative;
     float:left;
     border-right:1px solid #c0c0c0;
-}
+} */
 
 .AlterUser main {
     display: flex;

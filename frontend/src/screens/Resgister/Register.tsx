@@ -1,13 +1,16 @@
 
-import { useState } from "react"
-import { instance } from "../../hooks/useApi" 
-// import { Eye } from "@phosphor-icons/react"
+import { useContext, useState } from "react"
+import { Eye } from "@phosphor-icons/react"
 
 import Header from "../../components/Header/Header"
 
 import "./style.css"
+import { AuthContext } from "../../contexts/Auth/AuthContext"
+import { useNavigate } from "react-router-dom"
 
 export default function Register() {
+    const auth = useContext(AuthContext)
+    const navigate = useNavigate()
 
     const [ username, setUsername ] = useState("")
     const [ email, setEmail ] = useState("")
@@ -16,30 +19,24 @@ export default function Register() {
     const [ checkPassword, setCheckPassword ] = useState("")
     const [ showPassword, setShowPassword ] = useState(false) 
 
-    const validateFormFields = () => {
-        if (username === "" || email === "" || dateBirth === "" || password === "" || checkPassword === "") {
-            alert("Informe todos os campos!")
-            return false
-            
-        } else if (password != checkPassword) {
-            alert("Insira os campos de senha corretamente!")
-            return false
-        }
-
-        return true
-    }
-
     const handleRegister = async (event: { preventDefault: () => void }) => {
         event.preventDefault()
 
-        if(validateFormFields()){
-            await instance.post("/cadastro", { 
-                username, email, dateBirth, password
-            }) 
-            .catch((error) => {
-                console.error(error)
-            })
-            alert("USUARIO CADASTRADO!!")
+        if (username && email && dateBirth && password && checkPassword) {
+            if (password === checkPassword) {
+                const dateOfBirth = new Date(dateBirth)
+                const response = await auth.register(username, email, dateOfBirth, password)
+
+                if (response) {
+                    navigate('/home')
+                } else {
+                    alert('ERRO')
+                }
+            } else {
+                alert("Insira os campos de senha corretamente!")
+            }
+        } else {
+            alert("Informe todos os campos!")
         }
     } 
 
@@ -64,14 +61,15 @@ export default function Register() {
                             type="text"
                             placeholder="Username"
                             value={username}
-                            className=""
+                            required
                             onChange={(e) => { setUsername(e.target.value) }} />
 
 
                         <input
-                            type="text"
+                            type="email"
                             placeholder="Email"
                             value={email}
+                            required
                             className=""
                             onChange={(e) => { setEmail(e.target.value) }} />
 

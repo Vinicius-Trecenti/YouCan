@@ -1,29 +1,36 @@
 import HeaderUser from "../../components/HeaderUser/HeaderUser"
-import { useState } from "react"
+import { useState, useContext } from "react"
 import './style.css'
-import { Link } from 'react-router-dom'
+import { AuthContext } from "../../contexts/Auth/AuthContext"
 
 
 export default function AlterUser() {
-    const [username, setUsername] = useState("")
-    const [email, setEmail] = useState("")
-    const [dateBirth, setDateBirth] = useState("")
+    const auth = useContext(AuthContext)
+    const [username, setUsername] = useState(auth.user?.username)
+    // const [email, setEmail] = useState(auth.user?.email)
+
+    // const [dateBirth, setDateBirth] = useState(auth.user?.dateBirth)
     const [password, setPassword] = useState("")
     const [checkPassword, setCheckPassword] = useState("")
     const [showPassword, setShowPassword] = useState(false)
 
+    // const handleAlterUser = () => {
+    //     if (checkPassword === showPassword) {
+    //         console.log("ALO")
+    //     }
+    // }
 
     return (
         <div className="AlterUser">
 
             <HeaderUser />
 
-                <div className="btn">  
+            {/* <div className="btn">  
                         <button className="btn-back">
                             <Link to="/home">Voltar</Link>
                         </button>
-                </div>
-            
+                </div> */}
+
 
             <main>
                 <div>
@@ -38,7 +45,7 @@ export default function AlterUser() {
                         className=""
                         onChange={(e) => { setUsername(e.target.value) }} />
 
-                    <input
+                    {/* <input
                         type="text"
                         placeholder="Email"
                         value={email}
@@ -49,7 +56,7 @@ export default function AlterUser() {
                         type="date"
                         value={dateBirth}
                         className=""
-                        onChange={(e) => { setDateBirth(e.target.value) }} />
+                        onChange={(e) => { setDateBirth(e.target.value) }} /> */}
 
 
                     <div className="password">
@@ -59,7 +66,7 @@ export default function AlterUser() {
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
                         />
-
+        
                     </div>
 
 

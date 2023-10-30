@@ -1,14 +1,16 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
+* {
+  margin: 0;
+  padding: 0;
+}
 a {
   font-weight: 500;
   text-decoration: none;
 }
 
 body {
-  margin: 0;
   min-width: 100vw;
   min-height: 100vh;
   overflow-x: hidden;
@@ -27,10 +29,11 @@ h1 {
 }
 
 h2 {
-  color: #073B4C;
+  /* color: #073B4C; */
   font-size: 24px;
   font-weight: 700;
   line-height: 44px;
+  padding: 0;
 }
 
 strong {
@@ -38,7 +41,7 @@ strong {
 }
 
 p {
-  color: #616161;
+  /* color: #616161; */
   font-size: 20px;
   font-weight: 400;
   word-wrap: break-word

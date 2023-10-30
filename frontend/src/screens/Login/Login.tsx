@@ -19,22 +19,30 @@ export default function Login() {
         event.preventDefault()
 
         if (email && password) {
-            const isLogged = await auth.signIn(email, password)
+            try {
+                const isLogged = await auth.signIn(email, password)
 
-            if (isLogged) {
-                navigate(`/home`)
-            } else {
+                if (isLogged) {
+                    navigate(`/home`)
+                } else {
+                    alert('Credenciais erradas!')
+                }
+
+            } catch (error) {
+                console.log(error)
                 alert('Credenciais erradas!')
             }
         } else {
             alert('Insira todos os campos!')
         }
+
+
     }
 
     return (
         <div className="login">
             <div className="container">
-                <Header pathRoute="registro" />
+                <Header pathRoute="/registro" />
 
                 <main>
                     <div>

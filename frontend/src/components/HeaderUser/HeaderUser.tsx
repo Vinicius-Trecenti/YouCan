@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import Userbar from "../UserBar/Userbar";
 
 import './style.css'
@@ -5,10 +6,10 @@ import './style.css'
 export default function HeaderUser() {
     return (
         <div className="header">
-            <div className='logo'>
+            <Link to={'/home'} className='logo'>
                 <img src="../../src/assets/logo.svg" alt="logo" />
                 <h1>YouCan</h1>
-            </div>
+            </Link>
 
             <Userbar />
         </div>

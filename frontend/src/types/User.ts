@@ -2,6 +2,7 @@ export interface User {
     id: number,
     username: string, 
     email: string,
+    dateBirth: Date,
     password?: string
 }
 
@@ -10,6 +11,9 @@ export type UserData = {
         id: number, 
         username: string,
         email: string,
+        dateBirth: Date,
+        password?: string
     },
-    token: string
+    token: string,
+    error: string
 }

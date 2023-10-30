@@ -30,29 +30,37 @@
     color: #073B4C;
 }
 
-.home .quizzes {
+.home .quizzesHome {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(49%, 1fr));
     grid-gap: 10px;
+    
 }
 
-.home .quiz {
+.home .quiz  {
     display: flex;
     flex-direction: column;
-    
 
     justify-content: space-between;
 
     background-color: #EF476F;
+    
     height: 140px;
 
     padding: 20px;
     border-radius: 8px;
+    color: #FFF;
+}
+
+.home .quiz:hover {
+    cursor: pointer;
+    opacity: 90%;
 }
 
 .home .quiz .quiz-infos {
     display: flex;
     justify-content: space-between;
     align-items: end;
+    color: #FFF;
 }
 

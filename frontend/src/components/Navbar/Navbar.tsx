@@ -17,8 +17,8 @@ export default function Navbar() {
             </div>
 
             <div className='buttons'>
-                <button className='btn btn-green'>Jogar Quiz <Play size={22} /></button>
-                <button className='btn btn-pink'>Criar Quiz <Plus size={22} /></button>
+                <Link to={'/home'} className='btn btn-green'>Jogar Quiz <Play size={22} /></Link>
+                <Link to={'/create/quiz/materia'} className='btn btn-pink'>Criar Quiz <Plus size={22} /></Link>
             </div>
         </nav>
     )

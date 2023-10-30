@@ -1,4 +1,4 @@
-.screen {
+.createQuiz {
     display: flex;
     flex-direction: column;
     background-color: #f1f4fe;
@@ -8,7 +8,7 @@
     padding: 60px;
 }
 
-.navbar {
+.createQuiz .navbar {
     display: flex;
 
     width: 100%;
@@ -18,18 +18,18 @@
     margin-bottom: 80px;
 }
 
-.logo {
+.createQuiz .logo {
     display: flex;
     align-items: center;
     gap: 20px;
 }
 
-.logo img {
+.createQuiz .logo img {
     height: 85px;
     width: auto;
 }
 
-main {
+.createQuiz main {
     display: flex;
     flex-direction: column;
 
@@ -39,7 +39,7 @@ main {
     margin: auto;
 }
 
-main .search {
+.createQuiz main .search {
     width: 100%;
     border-radius: 12px;
     background-color: #EDEDED;
@@ -49,7 +49,7 @@ main .search {
     margin-top: 40px;
 }
 
-section {
+.createQuiz section {
     display: flex;
     flex-direction: column;
     gap: 16px;
@@ -60,7 +60,7 @@ section {
     width: 100%;
 }
 
-section .subject {
+.createQuiz section .subject {
     display: flex;
     padding: 8px 24px;
 
@@ -71,7 +71,7 @@ section .subject {
     background-color: #CFEEFF;
 }
 
-section button {
+.createQuiz section button {
     background: #118AB2;
     color: #F1F4FE;
     

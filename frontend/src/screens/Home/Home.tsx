@@ -13,6 +13,7 @@ interface Quizzes {
     total: number
 }
 
+
 export default function Home() {
     const api = useApi()
     const navigate = useNavigate()

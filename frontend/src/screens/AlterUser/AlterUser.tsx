@@ -2,7 +2,7 @@ import HeaderUser from "../../components/HeaderUser/HeaderUser"
 import { useState, useContext } from "react"
 import './style.css'
 import { AuthContext } from "../../contexts/Auth/AuthContext"
-
+import { useApi } from "../../hooks/useApi"
 
 export default function AlterUser() {
     const auth = useContext(AuthContext)
@@ -14,11 +14,43 @@ export default function AlterUser() {
     const [checkPassword, setCheckPassword] = useState("")
     const [showPassword, setShowPassword] = useState(false)
 
+    const id  = auth.user?.id
+
+    const api = useApi()
+
     // const handleAlterUser = () => {
     //     if (checkPassword === showPassword) {
     //         console.log("ALO")
     //     }
     // }
+
+     const handleAlter = async (e: { preventDefault: () => void }) => {
+         e.preventDefault()
+         //pegar o username -> ja tem
+         //pega checkPassaword -> ja tem
+
+        //nao pode ser null
+        if(username || password){
+
+            //verificar se é igual a o password
+            if(password === checkPassword){
+
+                //enviar pro banco
+                try {
+                   await api.alterUser(id, username, password, )
+                   
+                } catch (error) {
+                    alert("Erro na alteração")
+                    console.error(error)
+                }
+    
+            }
+            else {
+                alert("Senhas diferentes!")//se nao alert
+            }
+        }
+     }
+
 
     return (
         <div className="AlterUser">
@@ -80,7 +112,7 @@ export default function AlterUser() {
                         {/* <Eye size={32} onClick={toggleVisiblePassword} className="password-icon" /> */}
                     </div>
 
-                    <button type="submit" className="btn-alter" >SALVAR</button>
+                    <button type="submit" className="btn-alter" onClick={handleAlter}>SALVAR</button>
 
                 </form>
             </main>

@@ -34,7 +34,7 @@ Se você é um entusiasta da gamificação e educação, adoraríamos receber su
 - Vinicius Trecenti - Estudante de Analise e Desenvolvimento de Sistemas pelo Instituto Federal de educação ciência e tecnologia de São Paulo - campus Caraguatatuba
 
 ## Colaboradores
-- Deixamos aqui um agradecimento a todos os professores que nos apoiaram no desenvolvimento desse projeto.
+- Deixamos aqui um simples homenagem a todos os professores que nos apoiaram no desenvolvimento desse projeto. Assim como o objetivo do YouCan é o aprendizado, deixamos este tópico para enaltecer os colaboradores que incentivam o aprendizado e contribuíram para ele. Como Paulo Freire ensinou, 'Educação não transforma o mundo. Educação muda pessoas. Pessoas transformam o mundo.'. Agradecemos a todos os professores que tornam o mundo um lugar melhor através do aprendizado.
 
 ## Agradecimentos
 Agradecemos a todos que estão se juntando a nós na missão de tornar o aprendizado uma experiência emocionante e eficaz.

@@ -22,8 +22,7 @@ Para embarcar na sua jornada de aprendizado com o YouCan, siga estas etapas:
 ## Suporte
 Se você tiver alguma dúvida, problema ou sugestão, não hesite em entrar em contato conosco. Estamos aqui para ajudar!
 
-- Email: 
-- [Outros canais de suporte, como redes sociais, fóruns, etc.]
+- Email: suporte_TecnoPlay@gmail.com (Não estamos atendendo no momento) 
 
 ## Contribuição
 Se você é um entusiasta da gamificação e educação, adoraríamos receber suas contribuições para tornar o YouCan ainda mais envolvente, entre em contato e mande sua ideia para nós ;).

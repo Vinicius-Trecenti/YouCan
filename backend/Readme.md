@@ -40,10 +40,12 @@ Rotas
     - Decodifica o token (Retorna o ID)
     - Verifica id no banco
     - Retorna os dados do usuário
+
 [] Alterar usuário
     - Recebe ID, username e senha
     - Alterar no banco
     - Retorna resposta de sucesso/erro
+    
 [] Quizzes
     - Recebe ID da matéria,
     - Verifica no banco todos os quizzes da matéria

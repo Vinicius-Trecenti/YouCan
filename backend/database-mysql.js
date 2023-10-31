@@ -52,12 +52,12 @@ module.exports = {
         })
     },
 
-    alterUser: (id, username, email, dateBirth, password) => {
+    alterUser: (id, username, password) => {
         return new Promise((acept, rejected) => {
             db.query(`UPDATE usuario
-                        SET nome = ?, email = ?, senha = ?, nascimento = ? 
+                        SET nome = ?, senha = ? 
                         WHERE id = ?     
-                    `, [username, email, password, dateBirth, id], (error, results) => {
+                    `, [username, password, id], (error, results) => {
                 { error ? rejected(error) : acept(results) }
             })
         })

@@ -118,19 +118,22 @@ router.post('/cadastro', async (req, res) => {
 //     res.status(200).json({ ranking })
 // })
 
-// // Alterar usuário
-// router.put('/alterar', async (req, res) => {
-//     const { id, username, password } = req.body
+// Alterar usuário
+router.put('/alterar', async (req, res) => {
+    const { id, username, password } = req.body
 
-//     try {
-//         await database.alterUser(id, username, email, dateBirth, password)
+    try {
 
-//         res.status(200).send("Usuário alterado!") 
-//     } catch (error) {
-//         console.error(error)
-//         res.status(500).send("Erro na alteração do usuário!")
-//     }
-// })
+        const passwordHash = await bcrypt.hash(password, 10)
+
+        await database.alterUser(id, username, passwordHash)
+
+        res.status(200).send("Usuário alterado!") 
+    } catch (error) {
+        console.error(error)
+        res.status(500).send("Erro na alteração do usuário!")
+    }
+})
 // ------------------------------------- VALIDAR
 // Historico
 // router.get('/historico', async (req, res) => {

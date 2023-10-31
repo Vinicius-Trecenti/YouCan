@@ -6,7 +6,7 @@ Bem-vindo ao YouCan, o seu portal educacional que torna o aprendizado uma experi
 YouCan é uma plataforma de aprendizado inovadora, que está sendo projetado para tornar o processo de aprendizado mais agradável e eficaz. Através da gamificação, nossa abordagem única transforma o aprendizado em uma aventura emocionante. Este repositório contém o código-fonte relacionado ao projeto.
 
 ## Funcionalidades Principais
-- **Criação de quizzes**: O YouCan oferece uma variedade de recursos incríveis, como a criação de quizzes podendo adionar as questões e a materia que será trabalhada.
+- **Criação de quizzes**: O YouCan oferece uma variedade de recursos incríveis, como a criação de quizzes podendo adicionar as questões e a materia que será trabalhada.
 - **Ranking**: Divirta-se com a pagina de ranking, e estimule sua competitividade entre amigos. 
 - **Recompensas**: Ganhe recompensas e conquistas à medida que avança nas dificuldades dos quizzes.
 - **Acompanhamento de Progresso**: Acompanhe o seu progresso de aprendizado e veja onde você se destaca, analise seus erros e descubra como melhorar, com a pagina de historico.

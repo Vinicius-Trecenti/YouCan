@@ -5,26 +5,59 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import CustomProgressBar from "../../components/ProgressBar/CustomProgressBar";
 import '../../components/ProgressBar/ProgressBar.css'
+import { useApi } from "../../hooks/useApi"
 
+interface Question{
+    id : string,
+    quiz_id : string,
+    enunciado : string,
+    dica : string,
+    comentario : string,
+}
 
 
 export default function Question() {
     const [clickedButton, setClickedButton] = useState(null);
     const [correctAnswer, setCorrectAnswer] = useState(2);
     const [progress, setProgress] = useState(0);
+    const [questaoN, setquestaoN] = useState(0);
+
+    const [questions, setQuestions] = useState<Question[]>([])
+    const api = useApi()
+    //enunciado
+    //id do quizz ai fih
+    useEffect(() => {
+        const requestQuestions = async () => {
+            try {
+              const response = await api.showQuestions(1)
+              console.log(response)
+              setQuestions(response)
+            } catch (error) {
+                console.error(error)
+            }
+        }
+
+        requestQuestions()
+    }, [])
 
     const handleButtonClick = (index) => {
         if (index === correctAnswer) {
             setClickedButton(index)
             if (progress < 100) {
                 setProgress(progress + 10);
-              }
+            }
+            if (questaoN < 10) {
+                setquestaoN(questaoN + 1);
+            }
 
         } else {
             setClickedButton(index);
             if (progress < 100) {
                 setProgress(progress + 10);
-              }
+            }
+            if (questaoN < 10) {
+                setquestaoN(questaoN + 1);
+            }
         }
     };
 
@@ -36,16 +69,16 @@ export default function Question() {
             </div>
 
             <main className="main">
-                 <div className='progress'> 
-                    <div className='info'> 
+                <div className='progress'>
+                    <div className='info'>
                         <div><h2>materia - materia</h2></div>
-                        <div><h2>x/10</h2></div>
-                    </div> 
+                        <div><h2>{questaoN}/10</h2></div>
+                    </div>
                     <CustomProgressBar progress={progress} />
-                </div> 
+                </div>
 
                 <div className="statement">
-                    <h1>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptates laudantium et animi exercitationem, recusandae consectetur! Ut quia natus iure minus illo? Facere asperiores quod necessitatibus debitis sapiente. Ducimus, molestiae inventore.</h1>
+                    <h1>{questions[0].enunciado}</h1>
                 </div>
 
                 <div className="answers">

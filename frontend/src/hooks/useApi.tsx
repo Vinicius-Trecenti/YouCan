@@ -56,5 +56,13 @@ export const useApi = () => ({
         const response = await instance.put('/alterar', {id, username, password})
 
         return response.data
-    }
+    },
+
+    showQuestions: async (idQuestion:any) =>{
+        const response = await instance.get('/questao', {idQuestion})
+
+        return response.data
+    },
+
+
 })

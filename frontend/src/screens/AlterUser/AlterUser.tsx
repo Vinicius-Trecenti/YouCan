@@ -3,8 +3,13 @@ import { useState, useContext } from "react"
 import './style.css'
 import { AuthContext } from "../../contexts/Auth/AuthContext"
 import { useApi } from "../../hooks/useApi"
+import { useNavigate } from 'react-router-dom'
+
 
 export default function AlterUser() {
+
+    const navigate = useNavigate()
+
     const auth = useContext(AuthContext)
     const [username, setUsername] = useState(auth.user?.username)
     // const [email, setEmail] = useState(auth.user?.email)
@@ -13,7 +18,7 @@ export default function AlterUser() {
     const [password, setPassword] = useState("")
     const [checkPassword, setCheckPassword] = useState("")
     const [showPassword, setShowPassword] = useState(false)
-
+    
     const id  = auth.user?.id
 
     const api = useApi()
@@ -37,7 +42,8 @@ export default function AlterUser() {
 
                 //enviar pro banco
                 try {
-                   await api.alterUser(id, username, password, )
+                   await api.alterUser(id, username, password)
+                   navigate('/home')
                    
                 } catch (error) {
                     alert("Erro na alteração")

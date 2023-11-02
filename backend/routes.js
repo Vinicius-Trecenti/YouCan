@@ -1,11 +1,17 @@
 const express = require('express')
 const database = require('./database-mysql')
-const random = require('node:crypto')
 const jwt = require('jsonwebtoken')
 const bcrypt = require('bcrypt')
+const crypto = require('crypto');
 
 const router = express.Router()
 const secret = process.env.SECRET
+
+const generateID = () => {
+    const randomBytes = crypto.randomBytes(4); // 4 bytes = 32 bits
+    const randomNumber = parseInt(randomBytes.toString('hex'), 16);
+    return randomNumber;
+}
 
 //Home
 router.get('/materias', async (req, res) => {
@@ -146,31 +152,41 @@ router.put('/alterar', async (req, res) => {
 
 // Criar quiz
 router.post('/criarquiz', async (req, res) => {
-    const { quiz } = req.body
+    const quiz  = req.body
 
-    
+    console.log(quiz.perguntas.length)
 
-    // console.log(quiz.pergunta[0].enunciado)
+    const totalQuestions = quiz.perguntas.length
 
-    const idQuiz = random.randomUUID()
+    try {
+        const idQuiz = generateID()
 
-    await database.createQuiz(idQuiz, quiz.materia, quiz.nivel)
+        await database.createQuiz(idQuiz, quiz.materia_id, quiz.nome, quiz.nivel)
+        console.log('quiz criado!')
 
-    for (var cont = 0; cont < quiz.pergunta.length; cont++) {
+        for (var cont = 0; cont < totalQuestions; cont++) {
+            console.log('entrei')
+            const { enunciado, dica, comentario, alternativas } = quiz.perguntas[cont]
+            const idQuestion = generateID()
 
-        const { enunciado, alternativas, dica, comentario } = quiz.pergunta[cont]
-        const idQuestion = random.randomUUID()
+            await database.createQuestion(idQuestion, idQuiz, enunciado, dica, comentario)
+            console.log('questao criada!')
 
-        await database.createQuestion(idQuestion, idQuiz, enunciado, dica, comentario)
+            for (var ind = 0; ind < alternativas.length; ind++) {
+                const { descricao, pontuacao } = alternativas[ind]
 
-        for (var ind = 0; ind < alternativas.length; ind++) {
-            const { descricao, pontuacao } = alternativas[ind]
+                await database.createAlternative(idQuestion, descricao, pontuacao)
+                console.log('alternativa criada!')
 
-            await database.createAlternative(idQuestion, descricao, pontuacao)
+            }
         }
-    }
 
-    res.status(200).json({ message: "Quiz criado!" })
+        res.status(200).json({ message: "Quiz criado!" })
+    } catch (error) {
+        console.error(error)
+        res.status(500).send("Erro na criação do quiz!")
+    }
+    
 })
 
 module.exports = router

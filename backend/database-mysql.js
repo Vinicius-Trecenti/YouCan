@@ -75,9 +75,9 @@ module.exports = {
         })
     },
 
-    createQuiz: (id, materia, nivel) => {
+    createQuiz: (id, idMateria, nome, nivel) => {
         return new Promise((acept, rejected) => {
-            db.query(`INSERT INTO quiz (id, materia, nivel) VALUES (?, ?, ?)`, [id, materia, nivel], (error, results) => {
+            db.query(`INSERT INTO quiz (id, materia_id, nome, nivel) VALUES (?, ?, ?, ?)`, [id, idMateria, nome, nivel], (error, results) => {
                 { error ? rejected(error) : acept(results) }
             })
         })

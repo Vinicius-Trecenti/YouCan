@@ -8,6 +8,8 @@ export default function ResultQuiz() {
             
             <HeaderUser />
 
+            <h1>Trigonometria</h1>
+
             <main>
 
                
@@ -15,7 +17,7 @@ export default function ResultQuiz() {
 
                 <div className="ResultQuiz">
 
-                <h1>Trigonometria</h1>
+               
 
                     <div className="container">
                         

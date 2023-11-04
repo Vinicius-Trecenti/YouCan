@@ -54,7 +54,7 @@ Rotas
     - Recebe ID do quiz escolhido
     - Verifica no banco as perguntas desse quiz
     - Retorna as perguntas e alternativas
-[] Criar quiz
+[x] Criar quiz
     - Recebe todos os dados do quiz, perguntas e alternativas
     - Cria o quiz no banco
     - Cria as perguntas no banco

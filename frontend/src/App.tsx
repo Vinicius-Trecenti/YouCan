@@ -28,13 +28,13 @@ export default function App() {
 					<Route path='/home' element={<AuthRequire><Home /></AuthRequire>}/>
 					<Route path='/ranking' element={<AuthRequire><Ranking /></AuthRequire>}/>
 					{/* <Route path='/historico/:id' element={<Hist} */}
-					<Route path='/questao' element={<Question />}/>
+					<Route path='/questao/:id' element={<Question />}/>
 					<Route path='/alterar/usuario/' element={<AlterUser />} />
 					<Route path='/create/quiz/materia' element={<CreateQuiz />} />
 					<Route path='/create/quiz/question' element={<CreateQuizQuestion />} />
 					<Route path='/create/quiz/formulario' element={<CreateQuizForm />} />
 					<Route path='/result/quiz/' element={<ResultQuiz />} />
-					<Route path='/quizzes/' element={<Quizzes />} />
+					<Route path='/quizzes/:subjectName/:id' element={<Quizzes />} />
 					<Route path='*' element={<Error />}/>
 
 				{/* <Route path="/private" element={<RequireAuth><Private /></RequireAuth>} /> */}

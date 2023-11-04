@@ -6,6 +6,7 @@ import './style.css'
 import Header from "../../components/Header/Header"
 import { useNavigate } from "react-router-dom"
 import { AuthContext } from "../../contexts/Auth/AuthContext"
+import Home from "../Home/Home"
 
 
 export default function Login() {
@@ -38,6 +39,8 @@ export default function Login() {
 
 
     }
+
+    if (auth.user) return < Home/>
 
     return (
         <div className="login">

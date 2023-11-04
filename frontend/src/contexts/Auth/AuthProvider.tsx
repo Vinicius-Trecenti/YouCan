@@ -17,10 +17,11 @@ export const AuthProvider = ({ children }: { children: JSX.Element }) => {
 
             if (storageData) {
                 const data: User = await api.validateToken(storageData)
-
+                console.log(user)
 
                 if (data) {
                     setUser(data)
+                    console.log(user)
                 }
             }
         }

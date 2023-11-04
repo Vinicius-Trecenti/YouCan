@@ -3,7 +3,7 @@ const db = require('./db')
 module.exports = {
     userData: (id) => {
         return new Promise((acept, rejected) => {
-            db.query('SELECT nome, email, nascimento FROM usuario WHERE id = ?', [id], (error, results) => {
+            db.query('SELECT nome as username, email, nascimento as dateBirth FROM usuario WHERE id = ?', [id], (error, results) => {
                 { error ? rejected(error) : acept(results) }
             })
         })

@@ -28,7 +28,7 @@ export default function Dropdown() {
             </button>
 
             {isOpen && (
-                <div className="">
+                <div className="menu">
                     <ul>
                         <Link to="/home">
                             <li> <House /> Home</li>

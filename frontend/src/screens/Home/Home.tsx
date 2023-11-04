@@ -5,33 +5,39 @@ import Userbar from '../../components/UserBar/Userbar'
 import './style.css'
 import { useApi } from '../../hooks/useApi'
 import { useNavigate } from 'react-router-dom'
+import { MagnifyingGlass } from '@phosphor-icons/react'
 // import { useNavigate, useParams } from 'react-router-dom'
 
-interface Quizzes {
-    id: string,
+interface Subject {
+    id: number,
     nome: string,
     total: number
 }
 
-
 export default function Home() {
     const api = useApi()
     const navigate = useNavigate()
-    const [quizzes, setQuizzes] = useState<Quizzes[]>([])
+    const [search, setSearch] = useState('')
+    const [subjects, setSubjects] = useState<Subject[]>([])
 
     useEffect(() => {
-        const showQuizzes = async () => {
+        const showSubjects = async () => {
 
-            const response = await api.showQuizzes()
+            const response = await api.showSubjects()
 
-            setQuizzes(response)
+            setSubjects(response)
         }
 
-        showQuizzes()
+        showSubjects()
     })
 
-    const handleScreenQuizzes = () =>{
-        navigate('/quizzes')
+    const filteredSubjects = search.length > 0 
+        ? subjects.filter(quiz => quiz.nome.includes(search))
+        : subjects
+
+
+    const handleScreenQuizzes = (subjectName: string, id : number) => {
+        navigate(`/quizzes/${subjectName}/${id}`)
     }
 
     return (
@@ -42,20 +48,25 @@ export default function Home() {
                 <Userbar />
 
                 <div className='title-and-search'>
-                    <h1>Quizzes</h1>
-                    <input type="text" className='search' />
+                    <h1>Matérias</h1>
+                    <MagnifyingGlass />
+                    <input 
+                        type="text" 
+                        className='search' 
+                        onChange={(e) => setSearch(e.target.value)}
+                     />
                 </div>
                 <section className='quizzesHome'>
                     {
-                        quizzes?.map((quiz) => (
+                        filteredSubjects.map((subject) => (
                             <div
-                                key={quiz.id}
+                                key={subject.id}
                                 className="quiz"
-                                onClick={handleScreenQuizzes}
+                                onClick={() => {handleScreenQuizzes(subject.nome, subject.id)}}
                                 >
-                                <h2>{quiz.nome}</h2>
+                                <h2>{subject.nome}</h2>
                                 <div className='quiz-infos'>
-                                    <p>Total: {quiz.total}</p>
+                                    <p>Total: {subject.total}</p>
                                     <p>Feitos: 3</p>
                                 </div>
                             </div>

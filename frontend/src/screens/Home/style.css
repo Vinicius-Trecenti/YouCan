@@ -64,3 +64,7 @@
     color: #FFF;
 }
 
+.home input:focus {
+    border: none;
+}
+

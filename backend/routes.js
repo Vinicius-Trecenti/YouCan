@@ -13,6 +13,18 @@ const generateID = () => {
     return randomNumber;
 }
 
+// Criar token
+const createToken = (id) => {
+    try {
+        const token = jwt.sign(id, secret)
+
+        return token
+    } catch (error) {
+        console.error(error)
+        res.status(500).send('Erro na criação do token!')
+    }
+}
+
 //Home
 router.get('/materias', async (req, res) => {
     try {
@@ -27,22 +39,25 @@ router.get('/materias', async (req, res) => {
 // validar token e enviar dados do usuario
 router.post('/validar', async (req, res) => {
     const { token } = req.body
+    console.log(token)
 
     try {
-        const { id } = jwt.verify(token, secret)
-        const userData = await database.userData(id)
-
+        const id  = jwt.verify(token, secret)
+        const [ userData ] = await database.userData(id)
+        console.log(userData)
+        const { username, email, dateBirth } = userData
         if (!userData) {
-            res.status(498).send('Token Inválido!')
+            console.log('entrou')
+            res.status(401).send('Token Inválido!')
             return
         }
 
         res.status(200).json({
             user: {
                 id,
-                username: userData.nome,
-                email: userData.email,
-                dateBirth: userData.nascimento
+                username,
+                email,
+                dateBirth
             },
             token
         })
@@ -51,18 +66,6 @@ router.post('/validar', async (req, res) => {
         res.status(500).send('Erro na validação do token!')
     }
 })
-
-// Criar token
-const createToken = (id) => {
-    try {
-        const token = jwt.sign(id, secret)
-
-        return token
-    } catch (error) {
-        console.error(error)
-        res.status(500).send('Erro na criação do token!')
-    }
-}
 
 // Tela de login 
 router.post('/login', async (req, res) => {
@@ -117,6 +120,7 @@ router.post('/cadastro', async (req, res) => {
     }
 })
 // -------------------------------------- VALIDAR
+
 // Ranking 
 // router.get('/ranking', async (req, res) => {
 //     const ranking = await database.ranking()
@@ -153,9 +157,6 @@ router.put('/alterar', async (req, res) => {
 // Criar quiz
 router.post('/criarquiz', async (req, res) => {
     const quiz  = req.body
-
-    console.log(quiz.perguntas.length)
-
     const totalQuestions = quiz.perguntas.length
 
     try {
@@ -177,7 +178,6 @@ router.post('/criarquiz', async (req, res) => {
 
                 await database.createAlternative(idQuestion, descricao, pontuacao)
                 console.log('alternativa criada!')
-
             }
         }
 
@@ -186,7 +186,6 @@ router.post('/criarquiz', async (req, res) => {
         console.error(error)
         res.status(500).send("Erro na criação do quiz!")
     }
-    
 })
 
 module.exports = router

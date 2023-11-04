@@ -2,7 +2,10 @@
     display: flex;
     flex-direction: column;
     list-style: none;
-    
+}
+
+.drop .menu {
+    position: relative;
 }
 
 .drop ul{
@@ -16,20 +19,18 @@
 
 .drop ul li{
     display: flex;
-    /* justify-content: center; */
     align-items: center;
-    padding: 3%;
-    border: 5%;
+    padding: 5px;
+    border: 1px;
+    gap: 4px;
 
-    -moz-box-shadow:0 3px 10px 0 #CCC;
-    -webkit-box-shadow:0 3px 10px 0 #ccc;
-    text-shadow:0px 0px 5px #fff;
-    border:1px solid #c0c0c0;
-
-    list-style:none;
+    -moz-box-shadow: 0 3px 10px 0 #CCC;
+    -webkit-box-shadow: 0 3px 10px 0 #ccc;
+    text-shadow: 0px 0px 5px #fff;
+    border: 1px solid #c0c0c0;
 }
 
 .drop li{
     width: 100px;
-    margin: 1px 1px;
+    margin: 1px;
 }

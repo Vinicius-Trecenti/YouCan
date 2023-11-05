@@ -1,0 +1,68 @@
+.container {
+    height: 500px;
+    padding-top: 30px;
+    padding-left: 400px;
+    padding-right: 40px;
+}
+
+.painel {
+    display: block;
+    height: 308px;
+    padding: 40px 0px;
+
+    justify-content: center;
+    background-color: #CFEEFF;
+
+    border-radius: 20px;
+    background: var(--Green_light, #CFEEFF);
+}
+
+h3 {
+    color: var(--Blue_dark, #073B4C);
+    text-align: center;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 44px;
+    letter-spacing: -0.5px;
+}
+
+.painel-ofensiva {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.ball {
+    display: flex;
+
+
+    width: 40px;
+    height: 40px;
+    padding: 2px 16px;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border-radius: 50px;
+    background: var(--Yellow, #FFD166);
+}
+
+.infos {
+    display: flex;
+    justify-content: center;
+    flex-direction:row;
+    align-items: center;
+    padding-top: 60px;
+    gap: 10px;
+}
+
+h6 {
+    color: var(--Blue_dark, #073B4C);
+    text-align: center;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 22.53px;
+}

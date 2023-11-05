@@ -18,6 +18,7 @@ import ResultQuiz from './screens/ResultQuiz/ResultQuiz.tsx'
 import Quizzes from './screens/Quizzes/Quizzes.tsx'
 import CreateQuiz from './screens/CreateQuiz/CreateQuiz.tsx'
 import ConfirmPopUp from './components/ConfirmPopUp/ConfirmPopUp.tsx'
+import Historico from './screens/Historico/Historico.tsx'
 
 export default function App() {
     return (
@@ -37,6 +38,7 @@ export default function App() {
 					<Route path='/confirm/popup' element={<ConfirmPopUp />} />
 					<Route path='/result/quiz/' element={<ResultQuiz />} />
 					<Route path='/quizzes/:subjectName/:id' element={<Quizzes />} />
+					<Route path='/historico' element={<Historico/>}/>
 					<Route path='*' element={<Error />}/>
 
 				{/* <Route path="/private" element={<RequireAuth><Private /></RequireAuth>} /> */}

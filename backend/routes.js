@@ -146,13 +146,13 @@ router.put('/alterar', async (req, res) => {
 })
 // ------------------------------------- VALIDAR
 // Historico
-// router.get('/historico', async (req, res) => {
-//     const id = req.body
+router.get('/historico', async (req, res) => {
+    const id = req.body
 
-//     const historico = await database.historic(id)
+    const historico = await database.historic(id)
 
-//     res.status(200).json({ historico })
-// })
+    res.status(200).json({ historico })
+})
 
 // Criar quiz
 router.post('/criarquiz', async (req, res) => {

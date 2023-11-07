@@ -3,15 +3,46 @@ import './style.css'
 import Navbar from '../../components/Navbar/Navbar'
 import Userbar from '../../components/UserBar/Userbar'
 import {PiDevicesFill, PiCheckCircleDuotone} from "react-icons/pi"
+import { useApi } from "../../hooks/useApi"
+import { useEffect, useState, useContext  } from 'react'
+import { AuthContext } from "../../contexts/Auth/AuthContext"
+
+interface Historic {
+    QtdQuiz: number,
+    TotalAcertos: string;
+}
+
 
 
 export default function Historico() {
+
+    const auth = useContext(AuthContext)
+
+    const api = useApi()
+
+    const [historic, setHistoric] = useState<Historic>()
+
+    useEffect(() => {
+        const getHistoric = async () => {
+            try {
+                const response = await api.showInfosHistoric(auth.user?.id)
+
+                setHistoric(response.data)
+                console.log(historic)
+            } catch (error) {
+                console.error(error)
+            }
+        }
+    })
+
+    
+
     return (
-        <div>
+        <div className='historico'>
             <Navbar />
 
             <Userbar />
-
+            
             <div className='container'>
                 <div className='painel'>
                     <h3>Ofensiva semanal</h3>
@@ -48,7 +79,7 @@ export default function Historico() {
 
                         <div className='infos'>
                             <PiCheckCircleDuotone size={32} color='#073B4C'/>
-                            <h6>Respostas certas:</h6>
+                            <h6>Respostas certas: </h6>
                         </div>
                     </div>
 

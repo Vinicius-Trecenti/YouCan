@@ -65,7 +65,7 @@ module.exports = {
 
     historic: (id) => {
         return new Promise((acept, rejected) => {
-            db.query(`SELECT * 
+            db.query(`SELECT COUNT(*) AS QtdQuiz, SUM(acertos) AS TotalAcertos  
                         FROM usuarioquiz
                         INNER JOIN quiz ON usuarioquiz.quiz_id = quiz.id
                         WHERE usuarioquiz.usuario_id = ?

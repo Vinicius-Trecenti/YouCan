@@ -70,5 +70,9 @@ export const useApi = () => ({
         return response.data
     },
 
+    showInfosHistoric: async(usuario_id:any) => {
+        const response = await instance.get('/historico', {usuario_id})
 
+        return response.data
+    }
 })

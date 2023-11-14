@@ -36,6 +36,45 @@ router.get('/materias', async (req, res) => {
     }
 })
 
+// mostrar quizzes de uma determinada matéria
+router.get('/quizzes', async (req, res) => {
+    try {
+        const {subjectID} = req.body 
+        const quizzes = await database.searchAllQuizzesOfSubject(subjectID)
+        
+        res.status(200).json(quizzes)
+    } catch (error) {
+        console.error(error)
+        res.status(500).send('Erro na requisição dos quizzes!')
+    }
+})
+
+router.post('/ranking', async (req, res) => {
+    try {
+        const { userID } = req.body
+        const principalRanking = await database.ranking()
+        const userRanking = principalRanking.find(ranking => ranking.usuario_id === userID)
+
+        res.status(200).json({principalRanking, userRanking})
+    } catch (error) {
+        console.error(error)
+        res.status(500).send('Erro na requisição das matérias!')
+    }
+})
+
+router.post('/finalizar/quiz', async (req, res) => {
+    try {
+        const { userID, quizID, points, hits, dayAccomplished } = req.body
+
+        await database.realizedQuiz(userID, quizID, points, hits, dayAccomplished)
+
+        res.status(200).json({ message: "Quiz finalizado!" })
+    } catch (error) {
+        console.error(error)
+        res.status(500).send('Erro na requisição de finalização do quiz!')
+    }
+})
+
 // validar token e enviar dados do usuario
 router.post('/validar', async (req, res) => {
     const { token } = req.body
@@ -44,10 +83,9 @@ router.post('/validar', async (req, res) => {
     try {
         const id  = jwt.verify(token, secret)
         const [ userData ] = await database.userData(id)
-        console.log(userData)
         const { username, email, dateBirth } = userData
+        
         if (!userData) {
-            console.log('entrou')
             res.status(401).send('Token Inválido!')
             return
         }
@@ -119,16 +157,7 @@ router.post('/cadastro', async (req, res) => {
         res.status(500).send('Erro no cadastro!')
     }
 })
-// -------------------------------------- VALIDAR
 
-// Ranking 
-// router.get('/ranking', async (req, res) => {
-//     const ranking = await database.ranking()
-
-//     res.status(200).json({ ranking })
-// })
-
-// Alterar usuário
 router.put('/alterar', async (req, res) => {
     const { id, username, password } = req.body
 
@@ -163,21 +192,17 @@ router.post('/criarquiz', async (req, res) => {
         const idQuiz = generateID()
 
         await database.createQuiz(idQuiz, quiz.materia_id, quiz.nome, quiz.nivel)
-        console.log('quiz criado!')
 
         for (var cont = 0; cont < totalQuestions; cont++) {
-            console.log('entrei')
             const { enunciado, dica, comentario, alternativas } = quiz.perguntas[cont]
             const idQuestion = generateID()
 
             await database.createQuestion(idQuestion, idQuiz, enunciado, dica, comentario)
-            console.log('questao criada!')
 
             for (var ind = 0; ind < alternativas.length; ind++) {
                 const { descricao, pontuacao } = alternativas[ind]
 
                 await database.createAlternative(idQuestion, descricao, pontuacao)
-                console.log('alternativa criada!')
             }
         }
 

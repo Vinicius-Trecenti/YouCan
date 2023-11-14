@@ -23,6 +23,20 @@ module.exports = {
         })
     },
 
+    searchAllQuizzesOfSubject: (subjectID) => {
+        const sql = `
+            SELECT * 
+            FROM quiz 
+                INNER JOIN materia ON materia.id = quiz.materia_id
+            WHERE materia.id = ?`
+
+        return new Promise((acept, rejected) => {
+            db.query(sql, [subjectID], (error, results) => {
+                { error ? rejected(error) : acept(results) }
+            })
+        })
+    },
+
     loginAuth: (email) => {
         return new Promise((acept, rejected) => {
             db.query('SELECT * FROM usuario WHERE email = ?', [email], (error, results) => {
@@ -46,7 +60,17 @@ module.exports = {
                             INNER JOIN usuario ON usuario.id = usuarioquiz.usuario_id
                         GROUP BY usuario_id
                         ORDER BY soma DESC
-                        LIMIT 10`, (error, results) => {
+                    `, (error, results) => {
+                { error ? rejected(error) : acept(results) }
+            })
+        })
+    },
+
+    realizedQuiz: (userID, quizID, points, hits, dayAccomplished) => {
+        const sql = `INSERT INTO usuarioquiz (usuario_id, quiz_id, pontuacao, acertos, dia_realizado) VALUES (?, ?, ?, ?, ?)`
+
+        return new Promise((acept, rejected) => {
+            db.query(sql, [userID, quizID, points, hits, dayAccomplished], (error, results) => {
                 { error ? rejected(error) : acept(results) }
             })
         })

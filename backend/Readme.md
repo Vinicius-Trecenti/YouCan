@@ -41,16 +41,16 @@ Rotas
     - Verifica id no banco
     - Retorna os dados do usuário
 
-[] Alterar usuário
+[x] Alterar usuário
     - Recebe ID, username e senha
     - Alterar no banco
     - Retorna resposta de sucesso/erro
     
-[] Quizzes
+[x] Quizzes
     - Recebe ID da matéria,
     - Verifica no banco todos os quizzes da matéria
     - Retorna esses quizzes 
-[] Perguntas
+[/] Perguntas
     - Recebe ID do quiz escolhido
     - Verifica no banco as perguntas desse quiz
     - Retorna as perguntas e alternativas
@@ -60,7 +60,9 @@ Rotas
     - Cria as perguntas no banco
     - Cria as alternativas no banco
     - Retorna resposta de sucesso/erro
-[] Ranking 
+[x] Ranking 
+    - Somar as pontuações dos quizzes de todos os usuários
+    - Retornar resposta com as informações
 [] Histórico 
     - Recebe ID do usuário
     - Retorna informações principais dos quizzes feitos

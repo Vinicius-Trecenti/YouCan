@@ -18,7 +18,7 @@ import ResultQuiz from './screens/ResultQuiz/ResultQuiz.tsx'
 import Quizzes from './screens/Quizzes/Quizzes.tsx'
 import CreateQuiz from './screens/CreateQuiz/CreateQuiz.tsx'
 import ConfirmPopUp from './components/ConfirmPopUp/ConfirmPopUp.tsx'
-import Historico from './screens/Historico/Historico.tsx'
+import Historico from './screens/Historic/Historic.tsx'
 
 export default function App() {
     return (

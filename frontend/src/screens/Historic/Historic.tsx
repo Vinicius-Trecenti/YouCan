@@ -14,21 +14,23 @@ interface Historic {
 
 
 
-export default function Historico() {
+export default function Historic() {
 
     const auth = useContext(AuthContext)
 
     const api = useApi()
 
     const [historic, setHistoric] = useState<Historic>()
+    // console.log('teste pra ver se pega o historico')
 
     useEffect(() => {
         const getHistoric = async () => {
             try {
                 const response = await api.showInfosHistoric(auth.user?.id)
-
+                
                 setHistoric(response.data)
                 console.log(historic)
+                
             } catch (error) {
                 console.error(error)
             }
@@ -74,7 +76,7 @@ export default function Historico() {
                     <div className='infos'>
                         <div className='infos'>
                             <PiDevicesFill size={32} color='#073B4C' />
-                            <h6>Quizzes realizados:</h6>
+                            <h6>Quizzes realizados:  </h6>
                         </div>
 
                         <div className='infos'>

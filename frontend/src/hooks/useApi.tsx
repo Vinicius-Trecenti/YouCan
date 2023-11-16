@@ -52,26 +52,30 @@ export const useApi = () => ({
 
     showQuizzes: async (id: any) => {
 
-        return {id: 23523, nome: 'basico', nivel: 1, totalQuestions: 10}
-        
+        return { id: 23523, nome: 'basico', nivel: 1, totalQuestions: 10 }
+
         const response = await instance.get('/quizzes', { id })
 
         return response.data
     },
 
-    alterUser: async (id:any, username: any, password: string)  => {
-        const response = await instance.put('/alterar', {id, username, password})
+    alterUser: async (id: any, username: any, password: string) => {
+        const response = await instance.put('/alterar', { id, username, password })
         return response.data
     },
 
-    showQuestions: async (idQuestion:any) =>{
-        const response = await instance.get('/questao', {idQuestion})
-
-        return response.data
+    showQuestions: async (idQuiz) => {
+        const response = await instance.get(`/questao/${idQuiz}`);
+        return response.data;
     },
 
-    showInfosHistoric: async(usuario_id:any) => {
-        const response = await instance.get('/historico', {usuario_id})
+    getAnswers: async (idQuestion) => {
+        const response = await instance.get(`/alternativas`, {idQuestion});
+        return response.data;
+    },
+
+    showInfosHistoric: async (usuario_id: any) => {
+        const response = await instance.get('/historico', { usuario_id })
 
         return response.data
     }

@@ -2,63 +2,81 @@
 import HeaderUser from "../../components/HeaderUser/HeaderUser"
 import "./style.css"
 import { useEffect, useState } from 'react';
-import axios from 'axios';
 import CustomProgressBar from "../../components/ProgressBar/CustomProgressBar";
 import '../../components/ProgressBar/ProgressBar.css'
 import { useApi } from "../../hooks/useApi"
 
-interface Question{
-    id : string,
-    quiz_id : string,
-    enunciado : string,
-    dica : string,
-    comentario : string,
+interface Question {
+    id: string,
+    quiz_id: string,
+    enunciado: string,
+    dica: string,
+    comentario: string,
+    alternativas: Alternativa[];
+}
+interface Alternativa {
+    id: string;
+    pergunta_id: string;
+    texto: string;
+    pontuacao: string;
 }
 
 
 export default function Question() {
     const [clickedButton, setClickedButton] = useState(null);
     const [correctAnswer, setCorrectAnswer] = useState(2);
-    const [progress, setProgress] = useState(0);
-    const [questaoN, setquestaoN] = useState(0);
+    const [progress, setProgress] = useState(10);
+    const [numQuestao, setnumQuestao] = useState(0);
 
     const [questions, setQuestions] = useState<Question[]>([])
     const api = useApi()
-    //enunciado
-    //id do quizz ai fih
+    // obtenção das Questões 
     useEffect(() => {
         const requestQuestions = async () => {
             try {
-              const response = await api.showQuestions(1)
-              console.log(response)
-              setQuestions(response)
+                const response = await api.showQuestions(numQuestao + 1);
+                console.log('Resposta da API:', response);
+                setQuestions(response);
+                for (const question of response) {
+                    const alternativasResponse = await api.getAnswers(question.id);
+                    // Adicione as alternativas à pergunta
+                    setQuestions((prevQuestions) =>
+                        prevQuestions.map((prevQuestion) =>
+                            prevQuestion.id === question.id
+                                ? { ...prevQuestion, alternativas: alternativasResponse }
+                                : prevQuestion
+                        )
+                    );
+                }
             } catch (error) {
-                console.error(error)
+                console.error('Erro ao buscar perguntas:', error);
             }
-        }
+        };
+        requestQuestions();
+    }, []);
 
-        requestQuestions()
-    }, [])
-
+    // atualização de status
     const handleButtonClick = (index) => {
+        // checagem se a resposta é a certa
         if (index === correctAnswer) {
-            setClickedButton(index)
-            if (progress < 100) {
-                setProgress(progress + 10);
-            }
-            if (questaoN < 10) {
-                setquestaoN(questaoN + 1);
-            }
-
+            setClickedButton(index);
         } else {
             setClickedButton(index);
-            if (progress < 100) {
-                setProgress(progress + 10);
-            }
-            if (questaoN < 10) {
-                setquestaoN(questaoN + 1);
-            }
         }
+
+        // aumento da barra de progresso
+        if (progress < 100) {
+            setProgress(progress + 10);
+        }
+
+        // aumento do numero da questão
+        if (numQuestao < 10) {
+            setnumQuestao(numQuestao + 1);
+        }
+
+        setTimeout(() => {
+            setClickedButton(null);
+        }, 500);
     };
 
 
@@ -72,17 +90,25 @@ export default function Question() {
                 <div className='progress'>
                     <div className='info'>
                         <div><h2>materia - materia</h2></div>
-                        <div><h2>{questaoN}/10</h2></div>
+                        <div><h2>{numQuestao + 1}/10</h2></div>
                     </div>
                     <CustomProgressBar progress={progress} />
                 </div>
 
                 <div className="statement">
-                    <h1>{questions[0].enunciado}</h1>
+                    {questions.length > 0 ? (
+                        <div>
+                            <h1>{questions[numQuestao]?.enunciado}</h1>
+
+                        </div>
+                    ) : (
+                        <p>Carregando perguntas...</p>
+                    )}
+
                 </div>
 
                 <div className="answers">
-                    <button
+                    {/* <button
                         onClick={() => handleButtonClick(1)}
                         className={`button ${clickedButton === 1 ? (1 === correctAnswer ? 'green' : 'red') : ''}`}
                     >
@@ -109,7 +135,21 @@ export default function Question() {
                     >
                         <h2>D.</h2>
                         <h2>alternativa</h2>
-                    </button>
+                    </button> */}
+                    {questions.length > 0 && questions[numQuestao]?.alternativas ? (
+                        questions[numQuestao]?.alternativas.map((alternativa) => (
+                            <button
+                                key={alternativa.id}
+                                onClick={() => handleButtonClick(alternativa.id)}
+                                className={`button ${clickedButton === alternativa.id ? (alternativa.id === correctAnswer ? 'green' : 'red') : ''}`}
+                            >
+                                <h2>{String.fromCharCode(65 + parseInt(alternativa.id, 10))}.</h2>
+                                <h2>{alternativa.texto}</h2>
+                            </button>
+                        ))
+                    ) : (
+                        <p>Carregando alternativas...</p>
+                    )}
                 </div>
 
             </main >

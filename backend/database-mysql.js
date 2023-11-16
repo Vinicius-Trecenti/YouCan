@@ -127,4 +127,21 @@ module.exports = {
         })
     },
 
+    questions: (idQuiz) => {
+        return new Promise((acept, rejected) => {
+          db.query(`SELECT * FROM pergunta where quiz_id = ?`, [idQuiz], (error, results) => {
+            {error ? rejected(error) : acept(results)}
+          });
+        });
+      },
+    
+      answers: (idQuest) => {
+        return new Promise((acept, rejected) => {
+          db.query('SELECT * FROM alternativa where pergunta_id = ?', [idQuest], (error, results) =>{
+            {error ? rejected(error) : acept(results)}
+          });
+        });
+      },
+
+    
 }

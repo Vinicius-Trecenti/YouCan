@@ -39,9 +39,9 @@ router.get('/materias', async (req, res) => {
 // mostrar quizzes de uma determinada matéria
 router.get('/quizzes', async (req, res) => {
     try {
-        const {subjectID} = req.body 
+        const { subjectID } = req.body
         const quizzes = await database.searchAllQuizzesOfSubject(subjectID)
-        
+
         res.status(200).json(quizzes)
     } catch (error) {
         console.error(error)
@@ -55,7 +55,7 @@ router.post('/ranking', async (req, res) => {
         const principalRanking = await database.ranking()
         const userRanking = principalRanking.find(ranking => ranking.usuario_id === userID)
 
-        res.status(200).json({principalRanking, userRanking})
+        res.status(200).json({ principalRanking, userRanking })
     } catch (error) {
         console.error(error)
         res.status(500).send('Erro na requisição das matérias!')
@@ -81,10 +81,10 @@ router.post('/validar', async (req, res) => {
     console.log(token)
 
     try {
-        const id  = jwt.verify(token, secret)
-        const [ userData ] = await database.userData(id)
+        const id = jwt.verify(token, secret)
+        const [userData] = await database.userData(id)
         const { username, email, dateBirth } = userData
-        
+
         if (!userData) {
             res.status(401).send('Token Inválido!')
             return
@@ -167,7 +167,7 @@ router.put('/alterar', async (req, res) => {
 
         await database.alterUser(id, username, passwordHash)
 
-        res.status(200).send("Usuário alterado!") 
+        res.status(200).send("Usuário alterado!")
     } catch (error) {
         console.error(error)
         res.status(500).send("Erro na alteração do usuário!")
@@ -185,7 +185,7 @@ router.get('/historico', async (req, res) => {
 
 // Criar quiz
 router.post('/criarquiz', async (req, res) => {
-    const quiz  = req.body
+    const quiz = req.body
     const totalQuestions = quiz.perguntas.length
 
     try {
@@ -213,4 +213,32 @@ router.post('/criarquiz', async (req, res) => {
     }
 })
 
+//Consulta de enunciado da tela Questões
+router.get('/questao/:id', async (req, res) => {
+    try {
+        const { id } = req.params
+        const pergunta = await database.questions(id)
+        console.log(pergunta)
+        res.status(200).json(pergunta)
+
+
+    } catch (error) {
+        console.error(error)
+        res.status(500).send("Erro na obtenção de questões!")
+    }
+
+})
+
+router.get('/alternativas', async (req, res) => {
+    const idQuest = req.body;
+    try {
+        const results = await database.answers(idQuest);
+        res.json(results);
+        console.log('na rota ta certo')
+    } catch (error) {
+        console.error('Erro ao buscar alternativas:', error);
+        res.status(500).json({ error: 'Erro ao buscar alternativas' });
+    }
+})
+;
 module.exports = router

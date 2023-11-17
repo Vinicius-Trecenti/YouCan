@@ -78,5 +78,11 @@ export const useApi = () => ({
         const response = await instance.get('/historico', { usuario_id })
 
         return response.data
+    },
+
+    showRanking: async (usuario_id: any) => {
+        const response = await instance.post('/ranking', { usuario_id })
+        console.log("RANKING: ", response.data.principalRanking)
+        return response.data.principalRanking
     }
 })

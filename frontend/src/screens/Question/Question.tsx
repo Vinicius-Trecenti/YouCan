@@ -12,9 +12,8 @@ interface Question {
     enunciado: string,
     dica: string,
     comentario: string,
-    alternativas: Alternativa[];
 }
-interface Alternativa {
+interface Answers {
     id: string;
     pergunta_id: string;
     texto: string;
@@ -29,30 +28,36 @@ export default function Question() {
     const [numQuestao, setnumQuestao] = useState(0);
 
     const [questions, setQuestions] = useState<Question[]>([])
+    const [Answers, setAnswers] = useState<Answers[]>([])
     const api = useApi()
-    // obtenção das Questões 
+    
     useEffect(() => {
+        // obtenção das Questões 
         const requestQuestions = async () => {
             try {
                 const response = await api.showQuestions(numQuestao + 1);
                 console.log('Resposta da API:', response);
                 setQuestions(response);
-                for (const question of response) {
-                    const alternativasResponse = await api.getAnswers(question.id);
-                    // Adicione as alternativas à pergunta
-                    setQuestions((prevQuestions) =>
-                        prevQuestions.map((prevQuestion) =>
-                            prevQuestion.id === question.id
-                                ? { ...prevQuestion, alternativas: alternativasResponse }
-                                : prevQuestion
-                        )
-                    );
-                }
+                   
             } catch (error) {
                 console.error('Erro ao buscar perguntas:', error);
             }
         };
         requestQuestions();
+        //Obtenção das alternativas
+        const requestAnswers = async () => {
+            try {
+                const response = await api.getAnswers(questions[numQuestao].id);
+                console.log('Resposta da API alternativa: ', response);
+                setAnswers(response);
+                
+            } catch (error) {
+                console.error('Erro ao buscar alternativas', error)
+            }
+        };
+        requestAnswers();
+    
+    
     }, []);
 
     // atualização de status

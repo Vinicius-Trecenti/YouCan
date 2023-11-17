@@ -65,18 +65,20 @@ export const useApi = () => ({
     },
 
     showQuestions: async (idQuiz) => {
-        const response = await instance.get(`/questao/${idQuiz}`);
+        const response = await instance.get(`/questao/${idQuiz}`)
         return response.data;
     },
 
-    getAnswers: async (idQuestion) => {
-        const response = await instance.get(`/alternativas`, {idQuestion});
+    getAnswers: async (idQuestion : any) => {
+        const response = await instance.get(`/alternativas`, {idQuestion})
+        console.log("ta chegando na API")
+        console.log('IDquestion no API:', idQuestion)
         return response.data;
     },
 
     showInfosHistoric: async (usuario_id: any) => {
         const response = await instance.get('/historico', { usuario_id })
 
-        return response.data
-    }
+        return response.data;
+    },
 })

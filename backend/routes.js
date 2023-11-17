@@ -230,15 +230,17 @@ router.get('/questao/:id', async (req, res) => {
 })
 
 router.get('/alternativas', async (req, res) => {
-    const idQuest = req.body;
     try {
-        const results = await database.answers(idQuest);
-        res.json(results);
-        console.log('na rota ta certo')
+        const {idQuestion} = req.body
+        console.log('idquestion no routes',idQuestion)
+        const alternativa = await database.answers(idQuestion)
+        console.log(alternativa)
+        res.status(200).json(alternativa)
+       
     } catch (error) {
         console.error('Erro ao buscar alternativas:', error);
-        res.status(500).json({ error: 'Erro ao buscar alternativas' });
+        res.status(500).send('Erro ao buscar alternativas' )
     }
 })
-;
+
 module.exports = router

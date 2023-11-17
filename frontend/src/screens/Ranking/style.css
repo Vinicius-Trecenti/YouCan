@@ -52,7 +52,7 @@
     width: 80px;
 }
 
-.ranking .first-place {
+.ranking section  .user-ranking:first-of-type  {
     background-color: #06D6A0;
 }
 

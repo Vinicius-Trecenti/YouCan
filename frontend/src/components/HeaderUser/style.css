@@ -1,15 +1,15 @@
-.header {
+.header-user {
     display: flex;
     justify-content: space-between;
 }
 
-.logo {
+.header-user .logo {
     display: flex;
     align-items: center;
     gap: 20px;
 }
 
-.logo img {
+.header-user .logo img {
     height: 85px;
     width: auto;
 }

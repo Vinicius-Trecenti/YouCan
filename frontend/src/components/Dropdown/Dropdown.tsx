@@ -16,7 +16,7 @@ export default function Dropdown() {
     }
 
     return (
-        <div className='drop'>
+        <div className='dropdown'>
 
             <button onClick={() => setIsOpen((state) => !state)}>
 

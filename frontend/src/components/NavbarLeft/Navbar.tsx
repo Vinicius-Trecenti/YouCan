@@ -2,11 +2,11 @@ import { House, Trophy, ClockCounterClockwise, Play, Plus } from '@phosphor-icon
 import './style.css'
 import { Link } from 'react-router-dom'
 
-export default function Navbar() {
+export default function NavbarLeft() {
     return (
-        <nav className='nav'>
+        <nav className='navbar-left'>
             <div className='logo'>
-                <img src="../src/assets/logo.svg" alt="logo" />
+                <img src="/src/assets/logo.svg" alt="logo" />
                 <h1>YouCan</h1>
             </div>
 

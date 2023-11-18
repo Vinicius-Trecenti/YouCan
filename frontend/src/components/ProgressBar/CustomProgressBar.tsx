@@ -1,21 +1,17 @@
-import React from 'react';
-
 interface CustomProgressBarProps {
-  progress: number;
+	progress: number;
 }
 
-const CustomProgressBar: React.FC<CustomProgressBarProps> = ({ progress }) => {
-  const barStyles = {
-    width: `${progress}%`,
-  };
+export default function CustomProgressBar({ progress }: CustomProgressBarProps) {
+	const barStyles = {
+		width: `${progress}%`,
+	};
 
-  return (
-    <div className="custom-progress-bar">
-      <div className="bar" style={barStyles}>
-        {progress}%
-      </div>
-    </div>
-  );
-};
-
-export default CustomProgressBar;
+	return (
+		<div className="custom-progress-bar">
+			<div className="bar" style={barStyles}>
+				{progress}%
+			</div>
+		</div>
+	)
+}

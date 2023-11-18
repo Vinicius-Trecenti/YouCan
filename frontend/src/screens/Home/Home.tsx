@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
-import Navbar from '../../components/Navbar/Navbar'
-import Userbar from '../../components/UserBar/Userbar'
+import Navbar from '../../components/NavbarLeft/Navbar'
+import Userbar from '../../components/HeaderUserCustomized/Userbar'
 
 import './style.css'
 import { useApi } from '../../hooks/useApi'

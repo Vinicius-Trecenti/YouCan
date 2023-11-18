@@ -1,16 +1,22 @@
-.historico{
-    padding-top: 5%;
-    padding-right: 5%;
+.historic { 
+    display: flex;
+    background-color: #F1F4FE;
+    width: 100vw;
+    min-height: 100vh;
 }
 
-.container {
-    height: 500px;
-    padding-top: 30px;
-    padding-left: 400px;
-    padding-right: 40px;
-}
+.historic main {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    flex: 1;
+    /* width: calc(100vw - 380px); */
 
-.painel {
+    padding: 60px 60px 0 60px;
+    margin-left: 380px;
+}   
+
+.historic .painel {
     display: block;
     height: 308px;
     padding: 40px 0px;
@@ -22,7 +28,7 @@
     background: var(--Green_light, #CFEEFF);
 }
 
-h3 {
+.historic h3 {
     color: var(--Blue_dark, #073B4C);
     text-align: center;
     font-size: 24px;
@@ -32,14 +38,14 @@ h3 {
     letter-spacing: -0.5px;
 }
 
-.painel-ofensiva {
+.historic .painel-ofensiva {
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 10px;
 }
 
-.ball {
+.historic .ball {
     display: flex;
 
 
@@ -54,7 +60,7 @@ h3 {
     background: var(--Yellow, #FFD166);
 }
 
-.infos {
+.historic .infos {
     display: flex;
     justify-content: center;
     flex-direction:row;
@@ -63,7 +69,7 @@ h3 {
     gap: 10px;
 }
 
-h6 {
+.historic h6 {
     color: var(--Blue_dark, #073B4C);
     text-align: center;
     font-size: 16px;

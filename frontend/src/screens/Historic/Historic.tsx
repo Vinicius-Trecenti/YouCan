@@ -1,7 +1,7 @@
 
 import './style.css'
-import Navbar from '../../components/Navbar/Navbar'
-import Userbar from '../../components/UserBar/Userbar'
+import Navbar from '../../components/NavbarLeft/Navbar'
+import Userbar from '../../components/HeaderUserCustomized/Userbar'
 import {PiDevicesFill, PiCheckCircleDuotone} from "react-icons/pi"
 import { useApi } from "../../hooks/useApi"
 import { useEffect, useState, useContext  } from 'react'
@@ -40,12 +40,13 @@ export default function Historic() {
     
 
     return (
-        <div className='historico'>
+        <div className='historic'>
             <Navbar />
 
-            <Userbar />
-            
-            <div className='container'>
+            <main>
+
+                <Userbar />
+
                 <div className='painel'>
                     <h3>Ofensiva semanal</h3>
 
@@ -87,7 +88,7 @@ export default function Historic() {
 
                 </div>
 
-            </div>
+            </main>
 
                 
 

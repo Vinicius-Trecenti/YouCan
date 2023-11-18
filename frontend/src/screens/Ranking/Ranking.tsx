@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from "react";
-import Navbar from "../../components/Navbar/Navbar";
-import Userbar from "../../components/UserBar/Userbar";
+import Navbar from "../../components/NavbarLeft/Navbar";
+import Userbar from "../../components/HeaderUserCustomized/Userbar";
 import { AuthContext } from "../../contexts/Auth/AuthContext";
 import { useApi } from "../../hooks/useApi";
 import './style.css'

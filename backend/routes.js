@@ -91,13 +91,10 @@ router.post('/validar', async (req, res) => {
         }
 
         res.status(200).json({
-            user: {
                 id,
                 username,
                 email,
                 dateBirth
-            },
-            token
         })
     } catch (error) {
         console.error(error)

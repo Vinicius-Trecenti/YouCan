@@ -1,4 +1,4 @@
-.nav {
+.navbar-left {
     padding: 60px;
     
     display: flex;
@@ -15,24 +15,24 @@
     left: 0;
 }
 
-.nav .logo {
+.navbar-left .logo {
     display: flex;
     align-items: center;
     gap: 20px;
 }
 
-.nav .logo img {
+.navbar-left .logo img {
     height: 85px;
     width: auto;
 }
 
-.nav .pages {
+.navbar-left .pages {
     display: flex;
     flex-direction: column; 
     gap: 28px;
 }
 
-.pages a {
+.navbar-left .pages a {
     display: flex;
     align-items: center;
     gap: 12px;
@@ -43,14 +43,14 @@
     border-bottom: 1px solid #073B4C;
 }
 
-.buttons {
+.navbar-left .buttons {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 24px;
 }
 
-.btn {
+.navbar-left .btn {
     display: flex;
     align-items:center;
     justify-content: center;
@@ -66,10 +66,10 @@
     font-weight: 700;
 }
 
-.btn-green {
+.navbar-left .btn-green {
     background-color: #06D6A0;
 }
 
-.btn-pink {
+.navbar-left .btn-pink {
     background-color: #EF476F;
 }

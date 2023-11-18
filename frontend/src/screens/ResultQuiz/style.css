@@ -5,10 +5,9 @@
     flex-direction: column;
     align-items: center;
     gap: 60px;   
-    
 }
 
-h1{
+.ResultQuiz h1{
     margin-top: 6%;
 }
 
@@ -20,16 +19,12 @@ h1{
     text-align: center;
 }
 
-
 .ResultQuiz .imagem{
     max-width:100px;
     max-height:100px;
     width: auto;
     height: auto;
-   
 }
-
-
 
 .ResultQuiz .container{
     width: auto;
@@ -47,15 +42,11 @@ h1{
     gap: 150%;
     margin-left: 70%;
     margin-top: 7%;
-   
-
-
 }
 
 .ResultQuiz .nivel{
     color: #06D6A0;
     font-weight: bold;
-  
 }
 
 .ResultQuiz .box{
@@ -64,24 +55,18 @@ h1{
     justify-content: flex-start;
     margin: 10px;
     width: 100%;
-
     /*border: #012811 solid 10px;*/
-    
 }
 
-h3{
+.ResultQuiz h3{
     color: var(--Blue_dark, #073B4C);
     text-align: center;
-    
     font-size: 20px;
     font-style: normal;
- 
 }
 
-hr{
+.ResultQuiz hr{
     max-width: 85%;
     width: 85%;
     color: black;
-   
-
 }

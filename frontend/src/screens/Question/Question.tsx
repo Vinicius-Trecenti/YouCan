@@ -87,9 +87,7 @@ export default function Question() {
 
     return (
         <div className="question">
-            <div>
-                <HeaderUser />
-            </div>
+            <HeaderUser />
 
             <main className="main">
                 <div className='progress'>

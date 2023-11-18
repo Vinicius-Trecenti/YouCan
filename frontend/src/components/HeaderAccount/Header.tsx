@@ -6,9 +6,9 @@ interface Rota {
     pathRoute: string
 }
 
-export default function Header({ pathRoute }: Rota) {
+export default function HeaderAccount ({ pathRoute }: Rota) {
     return (
-        <header className="header">
+        <header className="header-account">
             <div>
                 <img src="../src/assets/logo.svg" alt="logo da empresa" />
             </div>

@@ -16,12 +16,10 @@ export const AuthProvider = ({ children }: { children: JSX.Element }) => {
             const storageData = localStorage.getItem('authToken')
 
             if (storageData) {
-                const data: User = await api.validateToken(storageData)
-                console.log(user)
+                const data = await api.validateToken(storageData)
 
                 if (data) {
                     setUser(data)
-                    console.log(user)
                 }
             }
         }

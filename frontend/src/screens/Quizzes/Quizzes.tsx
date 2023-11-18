@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
-import Navbar from "../../components/Navbar/Navbar";
-import Userbar from "../../components/UserBar/Userbar";
+import Navbar from "../../components/NavbarLeft/Navbar";
+import Userbar from "../../components/HeaderUserCustomized/Userbar";
 
 import './style.css'
 import { useEffect, useState } from "react";

@@ -3,7 +3,7 @@ import { useContext, useState } from "react"
 import './style.css'
 
 // import {Link} from 'react-router-dom'
-import Header from "../../components/Header/Header"
+import Header from "../../components/HeaderAccount/Header"
 import { useNavigate } from "react-router-dom"
 import { AuthContext } from "../../contexts/Auth/AuthContext"
 import Home from "../Home/Home"

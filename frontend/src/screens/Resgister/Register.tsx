@@ -2,7 +2,7 @@
 import { useContext, useState } from "react"
 import { Eye } from "@phosphor-icons/react"
 
-import Header from "../../components/Header/Header"
+import Header from "../../components/HeaderAccount/Header"
 
 import "./style.css"
 import { AuthContext } from "../../contexts/Auth/AuthContext"

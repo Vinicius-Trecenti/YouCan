@@ -1,14 +1,14 @@
-.drop{
+.dropdown{
     display: flex;
     flex-direction: column;
     list-style: none;
 }
 
-.drop .menu {
+.dropdown .menu {
     position: relative;
 }
 
-.drop ul{
+.dropdown ul{
     background-color:azure;
     align-items: center;
     position: absolute;
@@ -17,7 +17,7 @@
 
 }
 
-.drop ul li{
+.dropdown ul li{
     display: flex;
     align-items: center;
     padding: 5px;
@@ -30,7 +30,7 @@
     border: 1px solid #c0c0c0;
 }
 
-.drop li{
+.dropdown li{
     width: 100px;
     margin: 1px;
 }

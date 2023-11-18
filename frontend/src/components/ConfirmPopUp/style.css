@@ -10,7 +10,7 @@ main{
   justify-content: center;
 } */
 
-.popup{
+/* .popup{
     background-color: #D9D9D9;
     display: inline-flex;
     flex-direction:row;
@@ -31,7 +31,7 @@ font-family: Inter;
 font-size: 24px;
 font-style: normal;
 font-weight: 700;
-line-height: 44px; /* 183.333% */
+line-height: 44px;
 letter-spacing: -0.5px;
 border-radius: 8px;
 padding:8px 24px ;
@@ -50,4 +50,4 @@ padding:8px 24px ;
 
 .box1{
     margin-top: 24px 24px 17px 24px;
-}
+} */

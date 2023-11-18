@@ -1,8 +1,6 @@
-import { BsExclamationOctagon } from "react-icons/bs";
-import Userbar from "../../components/UserBar/Userbar";
-import './style.css'
-import Header from "../../components/Header/Header";
 import HeaderUser from "../../components/HeaderUser/HeaderUser";
+
+import './style.css'
 
 export default function CreateQuizForm() {
     return (
@@ -20,7 +18,6 @@ export default function CreateQuizForm() {
             <main >
 
                 <h1>Criar quiz</h1>
-
 
                 <form>
 

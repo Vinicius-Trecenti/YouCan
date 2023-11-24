@@ -12,6 +12,7 @@ interface Question {
     enunciado: string,
     dica: string,
     comentario: string,
+    Answers: Answers[]
 }
 interface Answers {
     id: string;
@@ -42,20 +43,20 @@ export default function Question() {
             } catch (error) {
                 console.error('Erro ao buscar perguntas:', error);
             }
-        };
+        }
         requestQuestions();
         //Obtenção das alternativas
-        const requestAnswers = async () => {
-            try {
-                const response = await api.getAnswers(questions[numQuestao].id);
-                console.log('Resposta da API alternativa: ', response);
-                setAnswers(response);
+        // const requestAnswers = async () => {
+        //     try {
+        //         const response = await api.getAnswers(questions[numQuestao].id);
+        //         console.log('Resposta da API alternativa: ', response);
+        //         setAnswers(response);
                 
-            } catch (error) {
-                console.error('Erro ao buscar alternativas', error)
-            }
-        };
-        requestAnswers();
+        //     } catch (error) {
+        //         console.error('Erro ao buscar alternativas', error)
+        //     }
+        // };
+        // requestAnswers();
     
     
     }, []);
@@ -139,12 +140,12 @@ export default function Question() {
                         <h2>D.</h2>
                         <h2>alternativa</h2>
                     </button> */}
-                    {questions.length > 0 && questions[numQuestao]?.alternativas ? (
-                        questions[numQuestao]?.alternativas.map((alternativa) => (
+                    {questions.length > 0 && questions[numQuestao]?.Answers ? (
+                        questions[numQuestao]?.Answers.map((Answers) => (
                             <button
                                 key={alternativa.id}
-                                onClick={() => handleButtonClick(alternativa.id)}
-                                className={`button ${clickedButton === alternativa.id ? (alternativa.id === correctAnswer ? 'green' : 'red') : ''}`}
+                                onClick={() => handleButtonClick(Answers.id)}
+                                className={`button ${clickedButton === alternativa.id ? (Answers.id === correctAnswer ? 'green' : 'red') : ''}`}
                             >
                                 <h2>{String.fromCharCode(65 + parseInt(alternativa.id, 10))}.</h2>
                                 <h2>{alternativa.texto}</h2>

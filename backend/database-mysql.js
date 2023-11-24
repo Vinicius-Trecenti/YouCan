@@ -129,7 +129,7 @@ module.exports = {
 
     questions: (idQuiz) => {
         return new Promise((acept, rejected) => {
-            db.query(`SELECT * FROM pergunta where quiz_id = ?`, [idQuiz], (error, results) => {
+            db.query(`Select * from pergunta iNNER JOIN alternativa on pergunta.id = alternativa.pergunta_id where quiz_id = ?`, [idQuiz], (error, results) => {
                 { error ? rejected(error) : acept(results) }
             });
         });

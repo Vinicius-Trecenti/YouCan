@@ -213,8 +213,8 @@ router.post('/criarquiz', async (req, res) => {
 //Consulta de enunciado da tela Questões
 router.get('/questao/:id', async (req, res) => {
     try {
-        const { id } = req.params
-        const pergunta = await database.questions(id)
+        const { quiz_id } = req.params
+        const pergunta = await database.questions(quiz_id)
         console.log(pergunta)
         res.status(200).json(pergunta)
 

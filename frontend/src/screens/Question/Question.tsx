@@ -24,52 +24,43 @@ interface Answers {
 
 export default function Question() {
     const [clickedButton, setClickedButton] = useState(null);
-    const [correctAnswer, setCorrectAnswer] = useState(2);
     const [progress, setProgress] = useState(10);
     const [numQuestao, setnumQuestao] = useState(0);
-
     const [questions, setQuestions] = useState<Question[]>([])
-    const [Answers, setAnswers] = useState<Answers[]>([])
+    const [materia, setMateria] = useState('Materia exemplo');
     const api = useApi()
-    
+    const [score, setScore] = useState(0);
+
+
     useEffect(() => {
-        // obtenção das Questões 
+        //requisição para a API para realizar a consulta do banco de dados
         const requestQuestions = async () => {
             try {
                 const response = await api.showQuestions(numQuestao + 1);
                 console.log('Resposta da API:', response);
                 setQuestions(response);
-                   
             } catch (error) {
                 console.error('Erro ao buscar perguntas:', error);
             }
-        }
+        };
+
         requestQuestions();
-        //Obtenção das alternativas
-        // const requestAnswers = async () => {
-        //     try {
-        //         const response = await api.getAnswers(questions[numQuestao].id);
-        //         console.log('Resposta da API alternativa: ', response);
-        //         setAnswers(response);
-                
-        //     } catch (error) {
-        //         console.error('Erro ao buscar alternativas', error)
-        //     }
-        // };
-        // requestAnswers();
-    
-    
     }, []);
 
     // atualização de status
-    const handleButtonClick = (index) => {
-        // checagem se a resposta é a certa
-        if (index === correctAnswer) {
-            setClickedButton(index);
-        } else {
-            setClickedButton(index);
+    const handleButtonClick = (id, pontuacao) => {
+        //verifica se a questão é correta
+        if (pontuacao == 1) {
+            console.log('reposta correta')
+            setClickedButton(id)
+            //adiciona um ponto ao score
+            setScore(score + 1)
         }
-
+        else {
+            console.log('resposta incorreta')
+            setClickedButton(id)
+        }
+        console.log(pontuacao)
         // aumento da barra de progresso
         if (progress < 100) {
             setProgress(progress + 10);
@@ -80,78 +71,59 @@ export default function Question() {
             setnumQuestao(numQuestao + 1);
         }
 
-        setTimeout(() => {
-            setClickedButton(null);
-        }, 500);
+        //tempo para o botão voltar a cor original
+        // setTimeout(() => {
+        //     setClickedButton(null);
+        // }, 500);
     };
 
 
     return (
         <div className="question">
             <HeaderUser />
-
             <main className="main">
+                {/* Barra de progresso, matéria e numero da questão */}
                 <div className='progress'>
                     <div className='info'>
-                        <div><h2>materia - materia</h2></div>
+                        <div><h2>{materia}</h2></div>
                         <div><h2>{numQuestao + 1}/10</h2></div>
                     </div>
                     <CustomProgressBar progress={progress} />
                 </div>
-
+                {/* div referente ao enunciado */}
                 <div className="statement">
                     {questions.length > 0 ? (
                         <div>
+                            {/* Enunciado da questão */}
                             <h1>{questions[numQuestao]?.enunciado}</h1>
 
                         </div>
                     ) : (
+                        //mensagem enquanto a requisição ao banco não retorna com a questão
                         <p>Carregando perguntas...</p>
                     )}
 
                 </div>
-
+                {/* Div referente a parte de respostas */}
                 <div className="answers">
-                    {/* <button
-                        onClick={() => handleButtonClick(1)}
-                        className={`button ${clickedButton === 1 ? (1 === correctAnswer ? 'green' : 'red') : ''}`}
-                    >
-                        <h2>A.</h2>
-                        <h2>alternativa</h2>
-                    </button>
-                    <button
-                        onClick={() => handleButtonClick(2)}
-                        className={`button ${clickedButton === 2 ? (2 === correctAnswer ? 'green' : 'red') : ''}`}
-                    >
-                        <h2>B.</h2>
-                        <h2>alternativa</h2>
-                    </button>
-                    <button
-                        onClick={() => handleButtonClick(3)}
-                        className={`button ${clickedButton === 3 ? (3 === correctAnswer ? 'green' : 'red') : ''}`}
-                    >
-                        <h2>C.</h2>
-                        <h2>alternativa</h2>
-                    </button>
-                    <button
-                        onClick={() => handleButtonClick(4)}
-                        className={`button ${clickedButton === 4 ? (4 === correctAnswer ? 'green' : 'red') : ''}`}
-                    >
-                        <h2>D.</h2>
-                        <h2>alternativa</h2>
-                    </button> */}
                     {questions.length > 0 && questions[numQuestao]?.Answers ? (
-                        questions[numQuestao]?.Answers.map((Answers) => (
-                            <button
-                                key={alternativa.id}
-                                onClick={() => handleButtonClick(Answers.id)}
-                                className={`button ${clickedButton === alternativa.id ? (Answers.id === correctAnswer ? 'green' : 'red') : ''}`}
-                            >
-                                <h2>{String.fromCharCode(65 + parseInt(alternativa.id, 10))}.</h2>
-                                <h2>{alternativa.texto}</h2>
-                            </button>
-                        ))
+                        questions[numQuestao]?.Answers.map((answer, index) => {
+                            return (
+                                <button
+                                    // identificação dos botões e codigo para mudar de cor
+                                    key={answer.id}
+                                    onClick={() => handleButtonClick(answer.id, answer.pontuacao)}
+                                    className={`button${clickedButton === answer.id ? (answer.pontuacao === '1' ? 'green' : "red") : ''}`}
+                                >
+                                    {/* Faz o A,B,C,D */}
+                                    <h2>{String.fromCharCode(65 + index)}.</h2>
+                                    {/* Texto da alternativa */}
+                                    <h2>{answer.alternativas}</h2>
+                                </button>
+                            );
+                        })
                     ) : (
+                         //mensagem enquanto a requisição ao banco não retorna com as alternativas
                         <p>Carregando alternativas...</p>
                     )}
                 </div>
@@ -161,4 +133,3 @@ export default function Question() {
     )
 
 }
-

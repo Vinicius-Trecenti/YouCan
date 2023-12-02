@@ -1,13 +1,14 @@
+/* aspecto geral da barra */
 .custom-progress-bar {
-    width: 64%;
+    width: 60%;
     background-color: #ccc;
     text-align: center;
     border-radius: 4px;
     overflow: hidden;
-    margin-left:345px;
+    margin-left: 20%;
     
   }
-  
+  /* progresso da barra */
 .custom-progress-bar .bar {
     width: 0;
     height: 100%;
@@ -16,5 +17,6 @@
     color:  white;
     background-color: #007bff;
     transition: width 0.3s ease-in-out;
+    
   }
   

@@ -1,3 +1,4 @@
+/* estilo global */
 .question {
     display: flex;
     flex-direction: column;
@@ -6,6 +7,7 @@
     height: 100%;
     max-width: 100%;
 }
+
 
 .question main{
     display: flex;
@@ -16,26 +18,27 @@
     margin-left: 0px;
 }
 
-
+/* Toda a parte em cima do enunciado, materia, num questão, barra de progresso */
 .question .progress{
     display: inline-flex;
     flex-direction: column;
     align-items: flex-start;
 }
 
+/* somente materia e num questão */
 .question .info{
     display: flex;
     align-items: flex-start;
-    gap: 12px;
+    gap: 44%;
     width: 85%;
-    justify-content: space-around;
-    
+    margin-left: 20%;
 }
 
 .question .info div{
     align-self: flex-start;
 }
 
+/* Estilo enunciado */
 .question .statement{
     display: flex;
     width: 100%;
@@ -48,29 +51,31 @@
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
 }
 
+/* Estilo Alternativa */
 .question .answers{
-    display: flex;
-    max-width: 1300px;
+    
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
     justify-content: center;
     align-items: center;
     align-content: center;
-    gap: 40px;
+    gap: 20px;
     flex-wrap: wrap;
-    margin: auto;
-    /* margin-top: 36px; */
+    margin-left: 12%;
+    margin-right: 5%;
+    margin-bottom: 5%;
 }
 
+/* Estilo para os botões */
 .question .button{
     display: flex;
-    width: 600px;
-    height: 80px;
+    width: 90%;
+    height: 90px;
     padding: 0px 12px;
     align-items: center;
     gap: 20px;
-    flex-shrink: 0;
-
     border-radius: 8px;
-    background: #1C77FF;
+    background-color: #1C77FF;
     color: #F1F4FE;
 }
 

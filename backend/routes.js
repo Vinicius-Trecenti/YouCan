@@ -211,33 +211,56 @@ router.post('/criarquiz', async (req, res) => {
 })
 
 //Consulta de enunciado da tela Questões
+// router.get('/questao/:id', async (req, res) => {
+//     try {
+//         const { id } = req.params
+//         const pergunta = await database.questions(id)
+//         console.log(pergunta)
+//         res.status(200).json(pergunta)
+
+//     } catch (error) {
+//         console.error(error)
+//         res.status(500).send("Erro na obtenção de questões!")
+//     }
+// })
+
+// router.get('/alternativas', async (req, res) => {
+//     try {
+//         const {idQuestion} = req.body
+//         console.log('idquestion no routes',idQuestion)
+//         const alternativa = await database.answers(idQuestion)
+//         console.log(alternativa)
+//         res.status(200).json(alternativa)
+       
+//     } catch (error) {
+//         console.error('Erro ao buscar alternativas:', error);
+//         res.status(500).send('Erro ao buscar alternativas' )
+//     }
+// })
 router.get('/questao/:id', async (req, res) => {
     try {
-        const { quiz_id } = req.params
-        const pergunta = await database.questions(quiz_id)
-        console.log(pergunta)
-        res.status(200).json(pergunta)
-
-
+      const { id } = req.params;
+      const pergunta = await database.questions(id);
+    // Extrai os IDs das perguntas para buscar as alternativas
+      const perguntaIds = pergunta.map((question) => question.id);
+  
+      // Busca as alternativas com base nos IDs das perguntas
+      const alternativas = await database.alternativas(perguntaIds);
+  
+      // Mapeia as alternativas para as perguntas correspondentes
+      const perguntasComAlternativas = pergunta.map((question) => {
+        return {
+          ...question, Answers: alternativas.filter(
+            (alternativa) => alternativa.pergunta_id === question.id
+          ),
+        };
+      });
+  
+      res.status(200).json(perguntasComAlternativas);
     } catch (error) {
-        console.error(error)
-        res.status(500).send("Erro na obtenção de questões!")
+      console.error(error);
+      res.status(500).send('Erro na obtenção de questões!');
     }
-
-})
-
-router.get('/alternativas', async (req, res) => {
-    try {
-        const {idQuestion} = req.body
-        console.log('idquestion no routes',idQuestion)
-        const alternativa = await database.answers(idQuestion)
-        console.log(alternativa)
-        res.status(200).json(alternativa)
-       
-    } catch (error) {
-        console.error('Erro ao buscar alternativas:', error);
-        res.status(500).send('Erro ao buscar alternativas' )
-    }
-})
+  });
 
 module.exports = router

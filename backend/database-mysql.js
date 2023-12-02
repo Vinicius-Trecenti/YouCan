@@ -127,20 +127,42 @@ module.exports = {
         })
     },
 
+    //consulta no banco de dados para a requisição das perguntas
     questions: (idQuiz) => {
-        return new Promise((acept, rejected) => {
-            db.query(`Select * from pergunta iNNER JOIN alternativa on pergunta.id = alternativa.pergunta_id where quiz_id = ?`, [idQuiz], (error, results) => {
-                { error ? rejected(error) : acept(results) }
-            });
+        return new Promise((accept, reject) => {
+            db.query(
+                `SELECT * FROM pergunta WHERE quiz_id = ?`,
+                [idQuiz], (error, results) => {
+                    if (error) {
+                        reject(error);
+                    } else {
+                        const questions = results.map((question) => {
+                            return {
+                                ...question,
+                                Answers: [], 
+                            };
+                        });
+                        accept(questions);
+                    }
+                }
+            );
         });
     },
 
-    answers: (idQuestion) => {
-        return new Promise((acept, rejected) => {
-            db.query(`SELECT * FROM alternativa where pergunta_id = ?`, [idQuestion], (error, results) => {
-                { error ? rejected(error) : acept(results) }
-                console.log('voltando da consulta', results)
-            });
+    //consulta no banco de dados para a requisição das alternativas
+    alternativas: (perguntaIds) => {
+        return new Promise((accept, reject) => {
+            db.query(
+                `SELECT * FROM alternativa WHERE pergunta_id IN (?)`,
+                [perguntaIds],
+                (error, results) => {
+                    if (error) {
+                        reject(error);
+                    } else {
+                        accept(results);
+                    }
+                }
+            );
         });
     },
 

@@ -1,0 +1,51 @@
+
+/* .box{
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 5px;
+    padding: 15px;
+} */
+
+.box-circle svg{
+    width: 150px;
+    height: 150px;
+    position: relative;
+}
+
+circle{
+    width: 150px;
+    height: 150px;
+    fill: none;
+    stroke: black;
+    stroke-width: 10;
+    transform: translate(5px, 5px);
+
+    /* Uma funcao abaixo depende da outra - um completa o circulo e o outro retira o que falta */
+    stroke-dasharray: 440;
+    stroke-dashoffset: 440;
+}
+
+circle:nth-child(1){
+    stroke-dashoffset: 0;
+    stroke: gray;
+}
+
+circle:nth-child(2){
+    /* calcular regra de 3 100 -> 40  70->x */
+    stroke-dashoffset: calc(440-220);
+    stroke: dodgerblue;
+}
+
+.number{
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: black;
+}

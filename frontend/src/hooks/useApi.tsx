@@ -69,11 +69,46 @@ export const useApi = () => ({
         return response.data;
     },
 
+
+
+
+
+
+
+
+
+
+
     showInfosHistoric: async (usuario_id: any) => {
-        const response = await instance.get('/historico', { usuario_id })
+        console.log(usuario_id)
+        const response = await instance.get('/historico', {usuario_id})
+
+        
+        console.log(response.data)
+        return response.data
+    },
+
+    showQtdQuiz: async () => {
+        const response = await instance.get('/quantidade')
+        // console.log(response.data)
 
         return response.data
     },
+
+    showquestionCount: async () => {
+        const response = await instance.get('/questionCount')
+
+        return response.data
+    },
+
+
+
+
+
+
+
+
+
 
     showRanking: async (usuario_id: any) => {
         const response = await instance.post('/ranking', { usuario_id })

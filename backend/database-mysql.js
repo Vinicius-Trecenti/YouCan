@@ -87,6 +87,13 @@ module.exports = {
         })
     },
 
+
+
+
+
+
+
+
     historic: (id) => {
         return new Promise((acept, rejected) => {
             db.query(`SELECT COUNT(*) AS QtdQuiz, SUM(acertos) AS TotalAcertos  
@@ -98,6 +105,41 @@ module.exports = {
             })
         })
     },
+
+    qtdQuiz: () => {
+        return new Promise((acept, reject) => {
+            db.query(`SELECT COUNT(*) AS qtdQuizes FROM quiz`, (error, results) => {
+                error ? reject(error) : acept(results)
+            })
+        })
+    },
+
+    questionQtd: () => {
+        return new Promise((acept, reject) => {
+            db.query(`SELECT COUNT(*) AS qtdQuestion FROM pergunta`, (error, results) => {
+                error ? reject(error) : acept(results)
+            })
+        })
+    },
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     createQuiz: (id, idMateria, nome, nivel) => {
         return new Promise((acept, rejected) => {

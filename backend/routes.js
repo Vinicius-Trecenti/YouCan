@@ -170,15 +170,48 @@ router.put('/alterar', async (req, res) => {
         res.status(500).send("Erro na alteração do usuário!")
     }
 })
+
+
+
+
+
+
+
 // ------------------------------------- VALIDAR
 // Historico
 router.get('/historico', async (req, res) => {
-    const id = req.body
 
-    const historico = await database.historic(id)
+    // const [id] = req.body
+    const id = 1
+    const [historico] = await database.historic(id)
 
-    res.status(200).json({ historico })
+    res.status(200).json(historico)
 })
+
+router.get('/quantidade', async (req, res) => {
+    const [quantidade] = await database.qtdQuiz()
+
+    res.status(200).json(quantidade)
+})
+
+router.get('/questionCount', async (req, res) => {
+    const [questionCount] = await database.questionQtd()
+
+    res.status(200).json(questionCount)
+})
+
+//-------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
 
 // Criar quiz
 router.post('/criarquiz', async (req, res) => {

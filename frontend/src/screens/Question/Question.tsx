@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react';
 import CustomProgressBar from "../../components/ProgressBar/CustomProgressBar";
 import '../../components/ProgressBar/ProgressBar.css'
 import { useApi } from "../../hooks/useApi"
+import { useNavigate } from 'react-router-dom'
 
 interface Question {
     id: string,
@@ -30,7 +31,8 @@ export default function Question() {
     const [materia, setMateria] = useState('Materia exemplo');
     const api = useApi()
     const [score, setScore] = useState(0);
-
+    const navigate = useNavigate()
+    
     useEffect(() => {
         //requisição para a API para realizar a consulta do banco de dados
         const requestQuestions = async () => {
@@ -49,6 +51,10 @@ export default function Question() {
 
         requestQuestions();
     }, []);
+
+    const afterQuiz = () => {
+        navigate('/home')
+    }
 
     // atualização de status
     const handleButtonClick = (id, pontuacao) => {
@@ -73,6 +79,11 @@ export default function Question() {
         if (numQuestao < 10) {
             setnumQuestao(numQuestao + 1);
         }
+        if (numQuestao == 9 ){
+            navigate('/result/quiz/')
+        }
+          
+
 
 
     };

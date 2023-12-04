@@ -41,7 +41,7 @@ export default function Historic() {
     
     //Por exemplo, se um aluno acertou 45 questões de um total de 60 quizzes realizados, a porcentagem de acertos seria:
     //Porcentagem de Acertos = (45 / 60) * 100 = 75%
-    const progressCorrect = countQuestion;
+    const progressCorrect = 100;
     //Math.floor((historic?.TotalAcertos / countAnswer)*100)
 
     //Porcentagem de quizzes feitos = (Quizzes feitos / Total de quizzes) * 100

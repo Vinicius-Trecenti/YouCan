@@ -48,14 +48,16 @@ router.get('/materias/todas', async (req, res) => {
 })
 
 // mostrar quizzes de uma determinada matéria
-router.get('/quizzes', async (req, res) => {
+router.post('/quizzes', async (req, res) => {
     try {
         const { subjectID } = req.body
         const quizzes = await database.searchAllQuizzesOfSubject(subjectID)
 
+        console.log(quizzes)
         res.status(200).json(quizzes)
     } catch (error) {
         console.error(error)
+        
         res.status(500).send('Erro na requisição dos quizzes!')
     }
 })
@@ -206,24 +208,26 @@ router.get('/questionCount', async (req, res) => {
 
 // Criar quiz
 router.post('/criarquiz', async (req, res) => {
-    const quiz = req.body
-    const totalQuestions = quiz.perguntas.length
+    const {quiz} = req.body
+
+    console.log(quiz)
+    const totalQuestions = quiz.questions.length
 
     try {
         const idQuiz = generateID()
 
-        await database.createQuiz(idQuiz, quiz.materia_id, quiz.nome, quiz.nivel)
+        await database.createQuiz(idQuiz, quiz.subject, quiz.name, quiz.level)
 
         for (var cont = 0; cont < totalQuestions; cont++) {
-            const { enunciado, dica, comentario, alternativas } = quiz.perguntas[cont]
+            const { statement, alternatives} = quiz.questions[cont]
             const idQuestion = generateID()
 
-            await database.createQuestion(idQuestion, idQuiz, enunciado, dica, comentario)
+            await database.createQuestion(idQuestion, idQuiz, statement)
 
-            for (var ind = 0; ind < alternativas.length; ind++) {
-                const { descricao, pontuacao } = alternativas[ind]
+            for (var ind = 0; ind < alternatives.length; ind++) {
+                const { description, points } = alternatives[ind]
 
-                await database.createAlternative(idQuestion, descricao, pontuacao)
+                await database.createAlternative(idQuestion, description, points)
             }
         }
 

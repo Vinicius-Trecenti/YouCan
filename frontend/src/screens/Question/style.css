@@ -1,11 +1,10 @@
 /* estilo global */
 .question {
     display: flex;
+    width: 100vw;
+    padding: 40px 60px;
+    display: flex;
     flex-direction: column;
-    background-color: #F1F4FE;
-    width: 100%;
-    height: 100%;
-    max-width: 100%;
 }
 
 

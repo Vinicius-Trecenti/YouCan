@@ -9,7 +9,7 @@ import { MagnifyingGlass } from '@phosphor-icons/react'
 // import { useNavigate, useParams } from 'react-router-dom'
 
 interface Subject {
-    id: number,
+    id: string,
     nome: string,
     total: number
 }
@@ -36,7 +36,7 @@ export default function Home() {
         : subjects
 
 
-    const handleScreenQuizzes = (subjectName: string, id : number) => {
+    const handleScreenQuizzes = (subjectName: string, id : string) => {
         navigate(`/quizzes/${subjectName}/${id}`)
     }
 

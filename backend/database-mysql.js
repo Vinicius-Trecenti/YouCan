@@ -37,7 +37,7 @@ module.exports = {
 
     searchAllQuizzesOfSubject: (subjectID) => {
         const sql = `
-            SELECT * 
+            SELECT quiz.id, quiz.nome, quiz.nivel
             FROM quiz 
                 INNER JOIN materia ON materia.id = quiz.materia_id
             WHERE materia.id = ?`

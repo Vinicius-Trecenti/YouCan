@@ -1,4 +1,5 @@
 import axios from "axios";
+import { Quiz } from "../types/Quiz";
 
 export const instance = axios.create({
     baseURL: 'http://localhost:3000/youcan',
@@ -52,11 +53,8 @@ export const useApi = () => ({
         return response.data
     },
 
-    showQuizzes: async (id: any) => {
-
-        return { id: 23523, nome: 'basico', nivel: 1, totalQuestions: 10 }
-
-        const response = await instance.get('/quizzes', { id })
+    showQuizzes: async (subjectID: string) => {
+        const response = await instance.post('/quizzes', { subjectID })
 
         return response.data
     },
@@ -72,16 +70,6 @@ export const useApi = () => ({
         
         return response.data;
     },
-
-
-
-
-
-
-
-
-
-
 
     showInfosHistoric: async (usuario_id: any) => {
         console.log(usuario_id)
@@ -105,18 +93,13 @@ export const useApi = () => ({
         return response.data
     },
 
-
-
-
-
-
-
-
-
-
     showRanking: async (usuario_id: any) => {
         const response = await instance.post('/ranking', { usuario_id })
         console.log("RANKING: ", response.data.principalRanking)
         return response.data.principalRanking
+    },
+
+    createQuiz: async (quiz : Quiz) => {
+        await instance.post('/criarquiz', { quiz })
     }
 })

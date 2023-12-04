@@ -4,10 +4,13 @@ import { useContext, useState } from 'react';
 // import { useNavigate } from 'react-router-dom';
 import { QuizContext } from '../../contexts/Quiz/QuizContext';
 import { Alternative } from '../../types/Quiz';
-
+import { useNavigate } from 'react-router-dom';
+import { useApi } from '../../hooks/useApi';
 
 export default function CreateQuizQuestion() {
-    // const navigate = useNavigate()
+    const navigate = useNavigate()
+
+    const api = useApi()
     const quiz = useContext(QuizContext)
 
     const [statement, setStatement] = useState('')
@@ -18,12 +21,12 @@ export default function CreateQuizQuestion() {
     const handleAddQuestion = (event: { preventDefault: () => void }) => {
         event.preventDefault()
 
-        if (statement && alternatives && correctAnswer) {
-            console.log(statement, correctAnswer, inputAlternatives)
+        if (statement && alternatives && correctAnswer) {            
             const points : string[] = []
+
+            for (let i = 0; i < 4; i++) {
             
-            for (let i = 0; i < inputAlternatives.length; i++) {
-                points[i] = i.toString() === correctAnswer ? '10' : '0'
+                points[i] = (i + 1).toString() === correctAnswer ? '10' : '0'
 
                 setAlternatives(prevAlternatives => ({
                     ...prevAlternatives,
@@ -32,8 +35,7 @@ export default function CreateQuizQuestion() {
                         points: points[i]
                     }
                 }));
-            }
-        
+            }        
 
             quiz.updateQuizPropertyQuestions(
                 {
@@ -68,10 +70,18 @@ export default function CreateQuizQuestion() {
         }))
     }
 
-    const handleSubmitQuiz = (event: { preventDefault: () => void }) => {
+    const handleSubmitQuiz = async (event: { preventDefault: () => void }) => {
         event.preventDefault()
 
-        console.log(alternatives)
+        handleAddQuestion(event)
+
+        try {
+            await api.createQuiz(quiz.quiz)
+        } catch (error) {
+            console.error(error)
+        }
+
+        navigate('/home')
     }
 
     return (

@@ -33,7 +33,7 @@ export const QuizProvider = ({ children }: { children: JSX.Element }) => {
     }
 
     const updateQuizPropertyQuestions = (value: Question) => {
-        console.log(value)
+        // console.log(value)
         try {
             setQuiz((prevQuiz) => ({
                 ...prevQuiz,

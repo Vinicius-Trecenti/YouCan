@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import Navbar from "../../components/NavbarLeft/Navbar";
 import Userbar from "../../components/HeaderUserCustomized/Userbar";
 
@@ -10,7 +10,7 @@ interface Quiz {
     id: number,
     nome: string,
     nivel: number,
-    totalQuestions: number
+    totalQuestions?: number
 }
 
 export default function Quizzes() {
@@ -22,13 +22,13 @@ export default function Quizzes() {
 
     useEffect(() => {
         const showQuizzes = async () => {
+            // const subjectID = id ?? '0'
             const response = await api.showQuizzes(id)
-            console.log(response.data)
-            setQuizzes(response.data)
+            setQuizzes(response)
         }
 
         showQuizzes()
-    })
+    }, [])
 
     const filteredQuizzes = search.length > 0
         ? quizzes.filter(quiz => quiz.nome.includes(search))
@@ -52,22 +52,24 @@ export default function Quizzes() {
                 <section>
                     {
                         filteredQuizzes?.map((quiz) => (
-                            <div
-                                key={quiz.id} 
-                                className="quiz">
-                                <div className="image-and-title">
-                                    {/* <img src="assets/quiz.svg" alt="" /> */}
-                                    <div>
-                                        <h2>{quiz.nome}</h2>
-                                        <strong>{quiz.totalQuestions}</strong>
+                            <Link to={`/questao/${quiz.id}`}>
+                                <div
+                                    key={quiz.id}
+                                    className="quiz">
+                                    <div className="image-and-title">
+                                        {/* <img src="assets/quiz.svg" alt="" /> */}
+                                        <div>
+                                            <h2>{quiz.nome}</h2>
+                                            <strong>{quiz.totalQuestions}</strong>
+                                        </div>
+
                                     </div>
 
+                                    <strong className="level-easy">{levels[quiz.nivel]}</strong>
+
+                                    <strong>Pontos: 300</strong>
                                 </div>
-
-                                <strong className="level-easy">{levels[quiz.nivel]}</strong>
-
-                                <strong>Pontos: 300</strong>
-                            </div>
+                            </Link>
                         ))
                     }
                 </section>

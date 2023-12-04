@@ -49,7 +49,7 @@
     margin-top: 40px;
 }
 
-.createQuiz section {
+.createQuiz form {
     display: flex;
     flex-direction: column;
     gap: 16px;
@@ -60,7 +60,7 @@
     width: 100%;
 }
 
-.createQuiz section .subject {
+.createQuiz form .subject {
     display: flex;
     padding: 8px 24px;
 
@@ -71,7 +71,7 @@
     background-color: #CFEEFF;
 }
 
-.createQuiz section button {
+.createQuiz form button {
     background: #118AB2;
     color: #F1F4FE;
     

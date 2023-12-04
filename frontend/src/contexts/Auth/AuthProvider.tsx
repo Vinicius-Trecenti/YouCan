@@ -9,8 +9,6 @@ export const AuthProvider = ({ children }: { children: JSX.Element }) => {
     const api = useApi()
 
     useEffect(() => {
-        console.log('cheguei porra')
-
         const validateToken = async () => {
 
             const storageData = localStorage.getItem('authToken')

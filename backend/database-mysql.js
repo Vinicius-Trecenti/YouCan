@@ -9,12 +9,24 @@ module.exports = {
         })
     },
 
-    searchAllSubjects: () => {
+    searchAllSubjectsWithQuizzes: () => {
         const sql = `
             SELECT mat.id, mat.nome, COUNT(*) as total
             FROM materia mat
                 INNER JOIN quiz ON mat.id = quiz.materia_id
             GROUP BY mat.nome`
+
+        return new Promise((acept, rejected) => {
+            db.query(sql, (error, results) => {
+                { error ? rejected(error) : acept(results) }
+            })
+        })
+    },
+
+    searchAllSubjects: () => {
+        const sql = `
+            SELECT mat.id, mat.nome as name
+            FROM materia mat`
 
         return new Promise((acept, rejected) => {
             db.query(sql, (error, results) => {

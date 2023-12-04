@@ -50,7 +50,7 @@ Rotas
     - Recebe ID da matéria,
     - Verifica no banco todos os quizzes da matéria
     - Retorna esses quizzes 
-[/] Perguntas
+[x] Perguntas
     - Recebe ID do quiz escolhido
     - Verifica no banco as perguntas desse quiz
     - Retorna as perguntas e alternativas
@@ -63,6 +63,6 @@ Rotas
 [x] Ranking 
     - Somar as pontuações dos quizzes de todos os usuários
     - Retornar resposta com as informações
-[] Histórico 
+[x] Histórico 
     - Recebe ID do usuário
     - Retorna informações principais dos quizzes feitos

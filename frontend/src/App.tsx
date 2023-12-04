@@ -17,33 +17,36 @@ import CreateQuizForm from './screens/CreateQuizForm/CreateQuizForm.tsx'
 import ResultQuiz from './screens/ResultQuiz/ResultQuiz.tsx'
 import Quizzes from './screens/Quizzes/Quizzes.tsx'
 import CreateQuiz from './screens/CreateQuiz/CreateQuiz.tsx'
-import ConfirmPopUp from './components/ConfirmPopUp/ConfirmPopUp.tsx'
 import Historico from './screens/Historic/Historic.tsx'
+import { QuizProvider } from './contexts/Quiz/QuizProvider.tsx'
 
 export default function App() {
-    return (
-        <AuthProvider>
-			<BrowserRouter>
-				<Routes>
-					<Route path='/' element={<Login />}/>
-					<Route path='/registro' element={<Register />}/>
-					<Route path='/home' element={<AuthRequire><Home /></AuthRequire>}/>
-					<Route path='/ranking' element={<AuthRequire><Ranking /></AuthRequire>}/>
-					{/* <Route path='/historico/:id' element={<Hist} */}
-					<Route path='/questao/:id' element={<Question />}/>
-					<Route path='/alterar/usuario/' element={<AlterUser />} />
-					<Route path='/create/quiz/materia' element={<CreateQuiz />} />
-					<Route path='/create/quiz/question' element={<CreateQuizQuestion />} />
-					<Route path='/create/quiz/formulario' element={<CreateQuizForm />} />
-					<Route path='/confirm/popup' element={<ConfirmPopUp />} />
-					<Route path='/result/quiz/' element={<ResultQuiz />} />
-					<Route path='/quizzes/:subjectName/:id' element={<Quizzes />} />
-					<Route path='/historico' element={<Historico/>}/>
-					<Route path='*' element={<Error />}/>
+	return (
+		<AuthProvider>
+			<QuizProvider>
+				<BrowserRouter>
+					<Routes>
+						<Route path='/' element={<Login />} />
+						<Route path='/registro' element={<Register />} />
+						<Route path='/home' element={<AuthRequire><Home /></AuthRequire>} />
+						<Route path='/ranking' element={<AuthRequire><Ranking /></AuthRequire>} />
+						<Route path='/questao/:id' element={<Question />} />
+						<Route path='/alterar/usuario/' element={<AlterUser />} />
+						<Route path='/create/quiz/materia' element={<CreateQuiz />} />
+						<Route path='/create/quiz/question' element={<CreateQuizQuestion />} />
+						<Route path='/create/quiz/formulario' element={<CreateQuizForm />} />
+						<Route path='/result/quiz/' element={<ResultQuiz />} />
+						<Route path='/quizzes/:subjectName/:id' element={<Quizzes />} />
+						<Route path='/historico' element={<Historico />} />
+						<Route path='*' element={<Error />} />
 
-				{/* <Route path="/private" element={<RequireAuth><Private /></RequireAuth>} /> */}
-				</Routes>
-			</BrowserRouter>
+						{/* <Route path='/historico/:id' element={<Hist} */}
+						{/* <Route path='/confirm/popup' element={<ConfirmPopUp />} /> */}
+						{/* <Route path="/private" element={<RequireAuth><Private /></RequireAuth>} /> */}
+					</Routes>
+				</BrowserRouter>
+			</QuizProvider>
+
 		</AuthProvider>
-    )
+	)
 }

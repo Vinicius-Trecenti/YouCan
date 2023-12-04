@@ -23,7 +23,7 @@ export default function Home() {
     useEffect(() => {
         const showSubjects = async () => {
 
-            const response = await api.showSubjects()
+            const response = await api.showSubjectsWithQuizzes()
 
             setSubjects(response)
         }

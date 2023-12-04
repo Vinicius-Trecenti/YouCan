@@ -26,7 +26,18 @@ const createToken = (id) => {
 }
 
 //Home
-router.get('/materias', async (req, res) => {
+router.get('/materias/selecionadas', async (req, res) => {
+    try {
+        const materias = await database.searchAllSubjectsWithQuizzes()
+        res.status(200).json(materias)
+    } catch (error) {
+        console.error(error)
+        res.status(500).send('Erro na requisição das matérias!')
+    }
+})
+
+// 
+router.get('/materias/todas', async (req, res) => {
     try {
         const materias = await database.searchAllSubjects()
         res.status(200).json(materias)
@@ -78,7 +89,7 @@ router.post('/finalizar/quiz', async (req, res) => {
 // validar token e enviar dados do usuario
 router.post('/validar', async (req, res) => {
     const { token } = req.body
-    console.log(token)
+    // console.log(token)
 
     try {
         const id = jwt.verify(token, secret)
@@ -171,13 +182,6 @@ router.put('/alterar', async (req, res) => {
     }
 })
 
-
-
-
-
-
-
-// ------------------------------------- VALIDAR
 // Historico
 router.get('/historico', async (req, res) => {
 
@@ -199,19 +203,6 @@ router.get('/questionCount', async (req, res) => {
 
     res.status(200).json(questionCount)
 })
-
-//-------------------------------------------------
-
-
-
-
-
-
-
-
-
-
-
 
 // Criar quiz
 router.post('/criarquiz', async (req, res) => {

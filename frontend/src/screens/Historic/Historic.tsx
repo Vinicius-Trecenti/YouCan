@@ -7,28 +7,24 @@ import { useApi } from "../../hooks/useApi"
 import { useEffect, useState, useContext } from 'react'
 import { AuthContext } from "../../contexts/Auth/AuthContext"
 // import Grafic from '../../components/CircleGrafic/Grafic'
-
-
 // import { CircularProgressbarWithChildren } from 'react-circular-progressbar';
-import { CircularProgressbar } from 'react-circular-progressbar';
-import 'react-circular-progressbar/dist/styles.css';
+import { CircularProgressbar } from 'react-circular-progressbar'
+import 'react-circular-progressbar/dist/styles.css'
 
+//feita pela usuario -> usuarioquiz
 interface Historic {
-    //feita pela usuario -> usuarioquiz
-    QtdQuiz: number,
-
-    TotalAcertos: string;
+    QtdQuiz: number
+    TotalAcertos: string
 }
 
+//preciso da quantidade de quizzes no banco em -> quizz
 interface Qtd {
-    //preciso da quantidade de quizzes no banco em -> quizz
-    qtdQuizes: number;
+    qtdQuizes: number
 }
 
 interface question{
-    countQuestion: number;
+    countQuestion: number
 }
-
 
 export default function Historic() {
 

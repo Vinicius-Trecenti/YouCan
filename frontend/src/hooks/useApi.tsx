@@ -14,10 +14,7 @@ export const useApi = () => ({
             password
         })
 
-        console.log(response.data)
-
         return response.data
-
     },
 
     register: async (username: string, email: string, dateBirth: Date, password: string) => {
@@ -31,7 +28,6 @@ export const useApi = () => ({
 
             return true
         } catch (error) {
-            console.log("ERRO NO REGISTRO!")
             console.error(error)
 
             return false
@@ -40,12 +36,18 @@ export const useApi = () => ({
 
     validateToken: async (token: string) => {
         const response = await instance.post('/validar', { token })
-        console.log(response.data)
+
         return response.data
     },
 
-    showSubjects: async () => {
-        const response = await instance.get('/materias')
+    showSubjectsWithQuizzes: async () => {
+        const response = await instance.get('/materias/selecionadas')
+
+        return response.data
+    },
+
+    showAllSubjects: async () => {
+        const response = await instance.get('/materias/todas')
 
         return response.data
     },
@@ -61,11 +63,13 @@ export const useApi = () => ({
 
     alterUser: async (id: any, username: any, password: string) => {
         const response = await instance.put('/alterar', { id, username, password })
+        
         return response.data
     },
 
     showQuestions: async (idQuiz) => {
         const response = await instance.get(`/questao/${idQuiz}`)
+        
         return response.data;
     },
 

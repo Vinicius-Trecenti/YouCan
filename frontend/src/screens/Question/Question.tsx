@@ -31,12 +31,15 @@ export default function Question() {
     const api = useApi()
     const [score, setScore] = useState(0);
 
-
     useEffect(() => {
         //requisição para a API para realizar a consulta do banco de dados
         const requestQuestions = async () => {
             try {
-                const response = await api.showQuestions(numQuestao + 1);
+                // Obtém a URL atual
+                const currentUrl = window.location.href;
+                // Extrai o ID da URL
+                const idFromUrl = currentUrl.split('/').pop();
+                const response = await api.showQuestions(idFromUrl);
                 console.log('Resposta da API:', response);
                 setQuestions(response);
             } catch (error) {
@@ -71,12 +74,8 @@ export default function Question() {
             setnumQuestao(numQuestao + 1);
         }
 
-        //tempo para o botão voltar a cor original
-        // setTimeout(() => {
-        //     setClickedButton(null);
-        // }, 500);
-    };
 
+    };
 
     return (
         <div className="question">
@@ -113,7 +112,7 @@ export default function Question() {
                                     // identificação dos botões e codigo para mudar de cor
                                     key={answer.id}
                                     onClick={() => handleButtonClick(answer.id, answer.pontuacao)}
-                                    className={`button${clickedButton === answer.id ? (answer.pontuacao === '1' ? 'green' : "red") : ''}`}
+                                    className={`button ${clickedButton === answer.id ? (answer.pontuacao === '1' ? 'green' : "red") : ''}`}
                                 >
                                     {/* Faz o A,B,C,D */}
                                     <h2>{String.fromCharCode(65 + index)}.</h2>
@@ -123,13 +122,11 @@ export default function Question() {
                             );
                         })
                     ) : (
-                         //mensagem enquanto a requisição ao banco não retorna com as alternativas
+                        //mensagem enquanto a requisição ao banco não retorna com as alternativas
                         <p>Carregando alternativas...</p>
                     )}
                 </div>
-
             </main >
         </div >
     )
-
 }

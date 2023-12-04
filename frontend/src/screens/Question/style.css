@@ -83,10 +83,10 @@
     color: #F1F4FE;
 }
 
-.question .green{
+.question .button .green{
     background-color: green;
 }
 
-.question .red{
+.question .button .red{
     background-color: rgb(196, 43, 43);
 }

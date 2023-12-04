@@ -272,7 +272,7 @@ router.post('/criarquiz', async (req, res) => {
 // })
 router.get('/questao/:id', async (req, res) => {
     try {
-      const { id } = req.params;
+      const id = req.params.id;
       const pergunta = await database.questions(id);
     // Extrai os IDs das perguntas para buscar as alternativas
       const perguntaIds = pergunta.map((question) => question.id);
